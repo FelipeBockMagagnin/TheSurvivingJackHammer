@@ -8,34 +8,31 @@ public class CharacterMov : MonoBehaviour {
 
 	public ParticleSystem particle;
 	public Animator camAnim;
-	int points = 0;
 	public Text score;
+	Animator playerAnim;
 
 	void Start () {
 		camAnim.SetTrigger("reload");
+		playerAnim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		score.text = "Score: " + points.ToString();
+		score.text = "Score: " + HighScoreManager.points.ToString();
 		if(Input.GetKeyDown(KeyCode.Space)){
 			transform.Rotate (0,0,-90);
+			playerAnim.SetTrigger("move");
 		}		
 	}
-
 
 	void OnTriggerEnter2D(Collider2D collider){		
 		Instantiate(particle, collider.transform.position, Quaternion.identity);
 		Destroy(collider.gameObject);
 		camAnim.SetTrigger("shake");
-		points++;
+		HighScoreManager.points++;
 	}
 
 	public void reloadLevel(){
-		points = 0;
 		Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 	}
-
-	
-
 }
