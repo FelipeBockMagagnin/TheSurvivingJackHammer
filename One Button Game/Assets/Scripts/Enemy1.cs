@@ -8,7 +8,7 @@ public class Enemy1 : MonoBehaviour {
 	public float Speed;
 
 	void Start(){
-		mainChar = GameObject.Find("main character");
+		mainChar = GameObject.Find("MainCharSpawn");
 	}
 
 	// Use this for initialization

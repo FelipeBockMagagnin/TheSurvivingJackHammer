@@ -20,19 +20,24 @@ public class DifficultyManager : MonoBehaviour {
 	public Text spawnRate;
 	public Text difficulty;
 	public Text enemy1Speed;
-	public Text HighScoreTxt;
-
+	
+	
 
 	public bool showUI;
 
+	public Animator camAnim;
+
 	void Start(){
+		camAnim = GameObject.Find("MainCamera").GetComponent<Animator>();
+		camAnim.SetTrigger("reload");
+	}
+
+	public void StartGame(){
 		Enemy1Speed = initialEnemy1Speed;
 		WaitTime = initialWaitTime;
 		StartCoroutine(increaseDifficulty());
-		time = 1;
-		HighScoreManager.CheckScore();
-		HighScoreTxt.text = "Best Score: " + (HighScoreManager.HighScore - 1).ToString();
-		HighScoreManager.points = 0;
+		time = 1;			
+		
 	}
 
 	void Update () {

@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour {
 
 	
 	// Update is called once per frame
-	void Start () {
+	public void StartGame () {
 		StartCoroutine(Wait());
 	}
 

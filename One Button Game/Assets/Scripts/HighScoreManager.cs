@@ -9,9 +9,13 @@ public class HighScoreManager : MonoBehaviour {
 
 	public static int HighScore = 0;
 
+	public static int index = 0;
+
+	
 	
 	public static HighScoreManager instance;
 
+	
 	public static void CheckScore(){
 		if(points >= HighScore && HighScore > 0){
 			HighScore = points;
