@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreUI : MonoBehaviour {
+public class ManagerUi : MonoBehaviour {
 
 	public Text score;
 	public Text HighScoreTxt;
 
-	void Awake(){
-		
+	void Start(){		
 		HighScoreManager.CheckScore();
 		HighScoreManager.points = 0;
 	}
@@ -20,3 +19,4 @@ public class ScoreUI : MonoBehaviour {
 		HighScoreTxt.text = "Best Score: " + (HighScoreManager.HighScore - 1).ToString();
 	}
 }
+

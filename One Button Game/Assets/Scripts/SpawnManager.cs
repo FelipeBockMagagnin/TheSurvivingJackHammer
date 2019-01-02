@@ -6,24 +6,23 @@ public class SpawnManager : MonoBehaviour {
 
 	public Transform[] spawnPos;
 	public GameObject[] enemys;
+	public GameObject[] enemy1Styles;
 	public float waitTime;
 
-	
-	// Update is called once per frame
-	public void StartGame () {
-		StartCoroutine(Wait());
+	public void StartGame (int index) {
+		StartCoroutine(StartSpawning(index));
 	}
 
-	IEnumerator create(GameObject enemy){
+	IEnumerator create(int index){
 		Transform position = spawnPos[Random.Range(0,spawnPos.Length)];
-		Instantiate(enemy, position.position, Quaternion.identity);
+		Instantiate(enemy1Styles[index], position.position, Quaternion.identity);
 		yield return new WaitForSeconds(waitTime); 
-		StartCoroutine(create(enemys[0]));
+		StartCoroutine(create(index));
 	}
 
-	IEnumerator Wait(){
+	IEnumerator StartSpawning(int index){
 		yield return new WaitForSeconds(0.8f); 
-		StartCoroutine(create(enemys[0])); //teste inimigo 1
+		StartCoroutine(create(index)); //teste inimigo 1
 	}
 
 	

@@ -5,24 +5,24 @@ using UnityEngine.UI;
 
 public class HighScoreManager : MonoBehaviour {
 
-	public static int points;
-
+	public static int points = 0;
 	public static int HighScore = 0;
-
-	public static int index = 0;
-
-	
+	public static int index = 0;	
 	
 	public static HighScoreManager instance;
 
 	
 	public static void CheckScore(){
-		if(points >= HighScore && HighScore > 0){
+		if(points > HighScore && HighScore > 0){
 			HighScore = points;
-		} else if(HighScore <= 0) {
+		} else if (HighScore < 0) {
 			HighScore = 1;
 		}
 	}	
+
+	void Start(){
+		HighScore = PlayerPrefs.GetInt("highscore");
+	}
 
 	void Awake(){
 		if(instance == null){
@@ -31,9 +31,5 @@ public class HighScoreManager : MonoBehaviour {
 		} else {
 			Destroy(gameObject);
 		}
-	}
-
-
-	
-	
+	}	
 }

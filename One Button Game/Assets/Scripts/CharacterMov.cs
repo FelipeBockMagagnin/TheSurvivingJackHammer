@@ -6,24 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class CharacterMov : MonoBehaviour {
 
-	public ParticleSystem particle;
 	Animator playerAnim;
-
 	AudioSource monsterDieSound;
 	AudioSource swingSound;
-
 	DifficultyManager difficultyScript;
+	StyleManager styleScript;
 
 
 	void Start(){
+		styleScript = GameObject.Find("StyleManager").GetComponent<StyleManager>();
 		difficultyScript = GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>();
 		playerAnim = this.GetComponent<Animator>();	
 		monsterDieSound = GameObject.Find("MonsterDieSound").GetComponent<AudioSource>();
 		swingSound = GameObject.Find("MoveSound").GetComponent<AudioSource>();
-		//camAnim.SetTrigger("reload");
 	}
 
-	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Space)){
 			transform.Rotate (0,0,-90);
@@ -33,7 +30,7 @@ public class CharacterMov : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D collider){		
-		Instantiate(particle, collider.transform.position, Quaternion.identity);
+		styleScript.InstantiateParticle(collider.transform);
 		Destroy(collider.gameObject);
 		difficultyScript.camAnim.SetTrigger("shake");
 		HighScoreManager.points++;
@@ -41,6 +38,7 @@ public class CharacterMov : MonoBehaviour {
 	}
 
 	public void reloadLevel(){
-		Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+		Scene scene = SceneManager.GetActiveScene(); 
+		SceneManager.LoadScene(scene.name);
 	}
 }

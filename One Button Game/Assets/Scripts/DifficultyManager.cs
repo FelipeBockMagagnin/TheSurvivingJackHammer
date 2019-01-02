@@ -15,21 +15,15 @@ public class DifficultyManager : MonoBehaviour {
 	float WaitTime;
 
 	int difficultyLevel = 1;
-	float time;
-
-	public Text spawnRate;
-	public Text difficulty;
-	public Text enemy1Speed;
-	
-	
-
-	public bool showUI;
+	float time;	
 
 	public Animator camAnim;
 
 	void Start(){
 		camAnim = GameObject.Find("MainCamera").GetComponent<Animator>();
 		camAnim.SetTrigger("reload");
+		PlayerPrefs.SetInt("highscore", HighScoreManager.HighScore);
+		PlayerPrefs.Save();
 	}
 
 	public void StartGame(){
@@ -37,13 +31,11 @@ public class DifficultyManager : MonoBehaviour {
 		WaitTime = initialWaitTime;
 		StartCoroutine(increaseDifficulty());
 		time = 1;			
-		
 	}
 
 	void Update () {
 		enemy1.Speed = Enemy1Speed;
 		spawnManager.waitTime = WaitTime;
-		ShowInUI();
 	}		
 	
 	IEnumerator increaseDifficulty(){
@@ -61,13 +53,4 @@ public class DifficultyManager : MonoBehaviour {
 		yield return new WaitForSeconds(time);
 		StartCoroutine(increaseDifficulty());
 	}
-
-	void ShowInUI(){		
-		if(showUI){			
-			spawnRate.text = "Spawn Rate: " + WaitTime.ToString("F");
-			difficulty.text = "Difficulty: " + difficultyLevel.ToString();
-			enemy1Speed.text = "Enemy1 Speed: " + Enemy1Speed.ToString("F");
-		}
-	}
-
 }
