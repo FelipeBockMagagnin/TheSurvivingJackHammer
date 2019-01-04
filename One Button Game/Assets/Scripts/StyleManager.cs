@@ -19,18 +19,28 @@ public class StyleManager : MonoBehaviour {
 	
 
 	public Button startButton;	
-	public SpawnManager spawnScript;			
+	public SpawnManager spawnScript;	
+	public MusicManager	musicScript;	
 
 	void Start(){
+		musicScript = GameObject.Find("MusicManager").GetComponent<MusicManager>();
 		spawnScript = GameObject.Find("Spawn").GetComponent<SpawnManager>();
 		gameStarted = false;
 		index = HighScoreManager.index;
 		MainCharSpawn = GameObject.Find("MainCharSpawn").transform;
+
+
 		if(ActualMainChar != null){
 			Destroy(ActualMainChar);
+		} else {
+			musicScript.FirstSong(HighScoreManager.index);
 		}
+
 		ActualMainChar = Instantiate(MainCharStyles[index], MainCharSpawn.position, Quaternion.identity);
 		ActualStartParticle = Instantiate(StartParticleSystem[HighScoreManager.index].gameObject, MainCharSpawn.position, Quaternion.identity);
+		
+		
+		
 	}
 
 	public void SetGameStartedTrue(){
@@ -55,6 +65,7 @@ public class StyleManager : MonoBehaviour {
 	}
 
 	void Update(){
+	
 		if(Input.GetKeyDown(KeyCode.Space) && gameStarted == false){
 			startButton.onClick.Invoke();
 			gameStarted = true;
@@ -78,6 +89,7 @@ public class StyleManager : MonoBehaviour {
 		}
 		ActualMainChar = Instantiate(MainCharStyles[2], MainCharSpawn.position, Quaternion.identity);
 		HighScoreManager.index = 2;
+		musicScript.StartSongStyle(HighScoreManager.index);
 	}
 
 	public void PenChars(){
@@ -86,6 +98,7 @@ public class StyleManager : MonoBehaviour {
 		}
 		ActualMainChar = Instantiate(MainCharStyles[1], MainCharSpawn.position, Quaternion.identity);
 		HighScoreManager.index = 1;
+		musicScript.StartSongStyle(HighScoreManager.index);
 	}
 
 	public void PixelChars(){
@@ -94,5 +107,6 @@ public class StyleManager : MonoBehaviour {
 		}
 		ActualMainChar = Instantiate(MainCharStyles[0], MainCharSpawn.position, Quaternion.identity);
 		HighScoreManager.index = 0;
+		musicScript.StartSongStyle(HighScoreManager.index);
 	}
 }

@@ -42,12 +42,12 @@ public class DifficultyManager : MonoBehaviour {
 		if(Enemy1Speed <= 6){
 			Enemy1Speed += 0.1f;
 		} else {
-			Enemy1Speed += 0.01f;
+			Enemy1Speed += 0.03f;
 		}
 		if(WaitTime >= 0.7){
 			WaitTime -= 0.03f;	
 		} else {
-			WaitTime -= 0.001f;
+			WaitTime -= 0.003f;
 		}
 		difficultyLevel++;
 		yield return new WaitForSeconds(time);

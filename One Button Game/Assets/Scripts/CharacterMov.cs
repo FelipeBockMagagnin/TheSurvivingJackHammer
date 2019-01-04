@@ -11,9 +11,15 @@ public class CharacterMov : MonoBehaviour {
 	AudioSource swingSound;
 	DifficultyManager difficultyScript;
 	StyleManager styleScript;
+	ChangeBackgroundColor changeScript;
+
+
+	
 
 
 	void Start(){
+		changeScript = GameObject.Find("MainCamera").GetComponent<ChangeBackgroundColor>();
+		changeScript.FirstColor();
 		styleScript = GameObject.Find("StyleManager").GetComponent<StyleManager>();
 		difficultyScript = GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>();
 		playerAnim = this.GetComponent<Animator>();	
@@ -22,6 +28,17 @@ public class CharacterMov : MonoBehaviour {
 	}
 
 	void Update () {
+		
+		if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+			if (touch.phase == TouchPhase.Began && styleScript.gameStarted == true){
+				transform.Rotate (0,0,-90);
+				playerAnim.SetTrigger("move");
+				swingSound.Play();
+			}
+		}
+
 		if(Input.GetKeyDown(KeyCode.Space)){
 			transform.Rotate (0,0,-90);
 			playerAnim.SetTrigger("move");
@@ -35,6 +52,7 @@ public class CharacterMov : MonoBehaviour {
 		difficultyScript.camAnim.SetTrigger("shake");
 		HighScoreManager.points++;
 		monsterDieSound.Play();
+		changeScript.changeBackGround();
 	}
 
 	public void reloadLevel(){

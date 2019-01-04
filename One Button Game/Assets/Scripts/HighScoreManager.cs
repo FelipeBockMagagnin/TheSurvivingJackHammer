@@ -10,13 +10,17 @@ public class HighScoreManager : MonoBehaviour {
 	public static int index = 0;	
 	
 	public static HighScoreManager instance;
-
 	
 	public static void CheckScore(){
 		if(points > HighScore && HighScore > 0){
 			HighScore = points;
-		} else if (HighScore < 0) {
+		}
+		if (HighScore <= 0) {
+			
 			HighScore = 1;
+			if(HighScore > PlayerPrefs.GetInt("highscore")){
+				PlayerPrefs.SetInt("highscore", HighScore);
+			}
 		}
 	}	
 

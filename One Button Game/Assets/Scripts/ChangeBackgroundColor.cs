@@ -7,23 +7,24 @@ public class ChangeBackgroundColor : MonoBehaviour {
 	int index;
 
 	public Camera cam;
+	public Color[] colors;
 
-	public void Start(){
-		StartCoroutine(count());
-	}
-
-	public void Update(){
-		cam.backgroundColor = Color.HSVToRGB(index,60,47,true);
-		
-	}
-
-	IEnumerator count(){
-		if(index >= 359){
+	public void changeBackGround(){
+		cam.backgroundColor = colors[index];
+		if(index == (colors.Length-1)){
 			index = 0;
 		} else {
 			index++;
 		}
-		yield return new WaitForSeconds(1); 
-		StartCoroutine(count());
+	}
+
+	public void FirstColor(){
+		index = Random.Range(0,colors.Length);
+		cam.backgroundColor = colors[index];
+		if(index == (colors.Length-1)){
+			index = 0;
+		} else {
+			index++;
+		}
 	}
 }
