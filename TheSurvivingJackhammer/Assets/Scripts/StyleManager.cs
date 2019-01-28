@@ -8,14 +8,26 @@ public class StyleManager : MonoBehaviour {
 
     public Transform MainCharSpawn;             //Store the location of the spawn point
     [Space(30)]
-    [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor")]
-    public  GameObject[] MainCharStyles; 			//0 - PixelArt; 1 - Pen; 2 - WaterColor
-    [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor")]
-    public ParticleSystem[] ParticleStyle;			//0 - PixelArt; 1 - Pen; 2 - WaterColor
-    [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor")]
-    public ParticleSystem[] StartParticleSystem;	//0 - PixelArt; 1 - Pen; 2 - WaterColor
+    [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;")]
+    public  GameObject[] MainCharStyles; 			//0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;
 
-	GameObject ActualMainChar;		//store the last mainchar instantiated	
+
+    [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;")]
+    public ParticleSystem[] ParticleStyle;			//0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;
+
+
+    [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;")]
+    public ParticleSystem[] StartParticleSystem;    //0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;
+
+
+    [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;")]
+    public GameObject[] enemy1Styles;               //0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;
+
+    [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;")]
+    public AudioSource[] musicStyles;	            //0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;
+
+
+    GameObject ActualMainChar;		//store the last mainchar instantiated	
 	GameObject ActualStartParticle;	//store the last particle instantiated
 	int index = 0;					//number of the last mainchar
 
@@ -43,9 +55,6 @@ public class StyleManager : MonoBehaviour {
 
 		ActualMainChar = Instantiate(MainCharStyles[index], MainCharSpawn.position, Quaternion.identity);
 		ActualStartParticle = Instantiate(StartParticleSystem[HighScoreManager.index].gameObject, MainCharSpawn.position, Quaternion.identity);
-		
-		
-		
 	}
 
 	public void SetGameStartedTrue(){

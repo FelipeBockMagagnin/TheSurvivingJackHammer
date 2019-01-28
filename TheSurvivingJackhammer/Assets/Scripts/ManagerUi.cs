@@ -7,8 +7,11 @@ public class ManagerUi : MonoBehaviour {
 
 	public Text score;
 	public Text HighScoreTxt;
+    public Text coinText;
+    CoinManager coinManager;
 
-	void Start(){		
+	void Start(){
+        coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
 		HighScoreManager.CheckScore();
 		HighScoreManager.points = 0;
 	}
@@ -17,6 +20,7 @@ public class ManagerUi : MonoBehaviour {
 	void Update () {
 		score.text = "Score: " + HighScoreManager.points.ToString();
 		HighScoreTxt.text = "Best Score: " + (HighScoreManager.HighScore - 1).ToString();
+        coinText.text = "Coins: " + coinManager.GetCoins().ToString();
 	}
 
 

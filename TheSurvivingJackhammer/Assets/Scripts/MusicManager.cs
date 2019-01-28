@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour {
 
-	public AudioSource[] musicStyles;	//0 - pixel; 1 - pen; 2 - watercolor
-	public AudioSource ActualMusicPlaying;
+	
+	AudioSource ActualMusicPlaying;
+    StyleManager styleManager;
 
-	public static MusicManager instance;
+
+    static MusicManager instance;
 
 	int lastSongIndex = 0;
 	bool firstsong = true;
 
 	void Awake(){
-		if(instance == null){
+        styleManager = GameObject.Find("StyleManager").GetComponent<StyleManager>();
+        if (instance == null){
 			instance = this;
 			DontDestroyOnLoad(this.gameObject);
 		} else {
@@ -23,9 +26,9 @@ public class MusicManager : MonoBehaviour {
 
 	public void FirstSong(int index){
 		if(firstsong == true){
-			ActualMusicPlaying = musicStyles[index];
+			ActualMusicPlaying = styleManager.musicStyles[index];
 			lastSongIndex = index;
-			musicStyles[index].Play();
+            styleManager.musicStyles[index].Play();
 			firstsong = false;
 		}
 	}
@@ -36,9 +39,9 @@ public class MusicManager : MonoBehaviour {
 		}
 
 		if(index != lastSongIndex){
-			ActualMusicPlaying = musicStyles[index];
+			ActualMusicPlaying = styleManager.musicStyles[index];
 			lastSongIndex = index;
-			musicStyles[index].Play();
+            styleManager.musicStyles[index].Play();
 		}
 	}
 }

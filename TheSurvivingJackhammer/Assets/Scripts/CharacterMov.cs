@@ -21,7 +21,7 @@ public class CharacterMov : MonoBehaviour {
 		swingSound = GameObject.Find("MoveSound").GetComponent<AudioSource>();
         playerAnim = this.GetComponent<Animator>();
 
-        changeScript.FirstColor();
+        changeScript.ChangeBackGroundIndex();
     }
 
 	void Update () {
@@ -52,7 +52,7 @@ public class CharacterMov : MonoBehaviour {
 		difficultyScript.camAnim.SetTrigger("shake");
 		HighScoreManager.points++;
 		monsterDieSound.Play();
-		changeScript.changeBackGround();
+        changeScript.ChangeBackGroundIndex();
 	}
 
 	public void reloadLevel(){

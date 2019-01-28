@@ -5,17 +5,22 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour {
 
 	public Transform[] spawnPos;
-	public GameObject[] enemys;
-	public GameObject[] enemy1Styles;
+    StyleManager styleManager;
 	public float waitTime;
 
-	public void StartGame (int index) {
+
+    private void Start()
+    {
+        styleManager = GameObject.Find("StyleManager").GetComponent<StyleManager>();
+    }
+
+    public void StartGame (int index) {
 		StartCoroutine(StartSpawning(index));
 	}
 
 	IEnumerator create(int index){
 		Transform position = spawnPos[Random.Range(0,spawnPos.Length)];
-		Instantiate(enemy1Styles[index], position.position, Quaternion.identity);
+		Instantiate(styleManager.enemy1Styles[index], position.position, Quaternion.identity);
 		yield return new WaitForSeconds(waitTime); 
 		StartCoroutine(create(index));
 	}
@@ -24,8 +29,4 @@ public class SpawnManager : MonoBehaviour {
 		yield return new WaitForSeconds(0.8f); 
 		StartCoroutine(create(index));
 	}
-
-	
-
-
 }

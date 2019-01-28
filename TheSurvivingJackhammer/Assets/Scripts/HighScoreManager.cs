@@ -10,9 +10,11 @@ public class HighScoreManager : MonoBehaviour {
 	public static int index = 0;	
 	
 	public static HighScoreManager instance;
+    static CoinManager coinManager;
 	
 	public static void CheckScore(){
-		if(points > HighScore && HighScore > 0){
+        coinManager.ChangeCoins(points / 2);
+        if (points > HighScore && HighScore > 0){
 			HighScore = points;
 		}
 		if (HighScore <= 0) {
@@ -26,6 +28,7 @@ public class HighScoreManager : MonoBehaviour {
 
 	void Start(){
 		HighScore = PlayerPrefs.GetInt("highscore");
+        coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
 	}
 
 	void Awake(){
