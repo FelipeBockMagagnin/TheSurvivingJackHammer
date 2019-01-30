@@ -55,8 +55,5 @@ public class CharacterMov : MonoBehaviour {
         changeScript.ChangeBackGroundIndex();
 	}
 
-	public void reloadLevel(){
-		Scene scene = SceneManager.GetActiveScene(); 
-		SceneManager.LoadScene(scene.name);
-	}
+	
 }

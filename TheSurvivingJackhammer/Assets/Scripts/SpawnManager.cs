@@ -14,13 +14,17 @@ public class SpawnManager : MonoBehaviour {
         styleManager = GameObject.Find("StyleManager").GetComponent<StyleManager>();
     }
 
-    public void StartGame (int index) {
-		StartCoroutine(StartSpawning(index));
+    public void StartGame () {
+        foreach (GameObject item in GameObject.FindGameObjectsWithTag("enemy"))
+        {
+            Destroy(item);
+        }
+		StartCoroutine(StartSpawning(HighScoreManager.index));
 	}
 
 	IEnumerator create(int index){
 		Transform position = spawnPos[Random.Range(0,spawnPos.Length)];
-		Instantiate(styleManager.enemy1Styles[index], position.position, Quaternion.identity);
+        Instantiate(styleManager.enemy1Styles[index], position.position, Quaternion.identity);
 		yield return new WaitForSeconds(waitTime); 
 		StartCoroutine(create(index));
 	}

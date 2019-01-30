@@ -7,9 +7,15 @@ public class CoinManager : MonoBehaviour
     private int coins;
     CoinManager instance;
 
+    bool firstTime = true;
+
     private void Awake()
     {
-        DontDestroyOnLoad();    
+        DontDestroyOnLoad();           
+    }
+
+    private void Start()
+    {
         LoadCoins();
     }
 
@@ -28,7 +34,13 @@ public class CoinManager : MonoBehaviour
 
     public void ChangeCoins(int value)
     {
-        coins = coins + value;
+        if (!firstTime)
+        {
+            coins = coins + value;
+            SaveCoins();
+            print("aaa");
+        }
+        firstTime = false;
     }
 
     public int GetCoins()
@@ -38,11 +50,12 @@ public class CoinManager : MonoBehaviour
 
     public void SaveCoins()
     {
-
+        PlayerPrefs.SetInt("Coins", coins);
     }
 
     private void LoadCoins()
     {
-
+        coins = PlayerPrefs.GetInt("Coins");
+        Debug.Log(PlayerPrefs.GetInt("Coins"));
     }
 }

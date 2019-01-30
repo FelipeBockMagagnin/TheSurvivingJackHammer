@@ -37,9 +37,23 @@ public class StyleManager : MonoBehaviour {
 
 	public Button startButton;	
 	SpawnManager spawnScript;	
-	MusicManager musicScript;	
+	MusicManager musicScript;
+
+    GameObject StylePanel;
+
+    public void activeStylePanel()
+    {
+        StylePanel.GetComponent<Animator>().SetBool("active", true);
+    }
+
+    public void disableStylePanel()
+    {
+        StylePanel.GetComponent<Animator>().SetBool("active", false);
+    }
+
 
 	void Start(){
+        StylePanel = GameObject.Find("StylePanel");
 		musicScript = GameObject.Find("MusicManager").GetComponent<MusicManager>();
 		spawnScript = GameObject.Find("Spawn").GetComponent<SpawnManager>();
 		gameStarted = false;
@@ -57,9 +71,23 @@ public class StyleManager : MonoBehaviour {
 		ActualStartParticle = Instantiate(StartParticleSystem[HighScoreManager.index].gameObject, MainCharSpawn.position, Quaternion.identity);
 	}
 
+    public void retartGame()
+    {
+        if (ActualMainChar != null)
+        {
+            Destroy(ActualMainChar);
+        }
+        else
+        {
+            musicScript.FirstSong(HighScoreManager.index);
+        }
+
+        ActualMainChar = Instantiate(MainCharStyles[index], MainCharSpawn.position, Quaternion.identity);
+    }
+
 	public void SetGameStartedTrue(){
 		if(gameStarted == false){
-			spawnScript.StartGame(HighScoreManager.index);
+			spawnScript.StartGame();
 		}
 		gameStarted = true;
 		
@@ -77,6 +105,16 @@ public class StyleManager : MonoBehaviour {
 		}
 		ActualStartParticle = Instantiate(StartParticleSystem[HighScoreManager.index].gameObject, MainCharSpawn.position, Quaternion.identity);
 	}
+
+    public void StartGame()
+    {
+        startButton.onClick.Invoke();
+        gameStarted = true;
+        if (ActualStartParticle != null)
+        {
+            Destroy(ActualStartParticle);
+        }
+    }
 
 	void Update(){
 	
