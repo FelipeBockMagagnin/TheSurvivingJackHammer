@@ -12,6 +12,7 @@ public class CharacterMov : MonoBehaviour {
 	DifficultyManager difficultyScript;
 	StyleManager styleScript;
 	ChangeBackgroundColor changeScript;
+    CoinManager coinManager;
 
 	void Start(){
 		changeScript = GameObject.Find("MainCamera").GetComponent<ChangeBackgroundColor>();
@@ -19,6 +20,7 @@ public class CharacterMov : MonoBehaviour {
 		difficultyScript = GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>();
 		monsterDieSound = GameObject.Find("MonsterDieSound").GetComponent<AudioSource>();
 		swingSound = GameObject.Find("MoveSound").GetComponent<AudioSource>();
+        coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
         playerAnim = this.GetComponent<Animator>();
 
         changeScript.ChangeBackGroundIndex();
@@ -53,7 +55,12 @@ public class CharacterMov : MonoBehaviour {
 		HighScoreManager.points++;
 		monsterDieSound.Play();
         changeScript.ChangeBackGroundIndex();
-	}
+        CoinManager.IncreaseEarnedCoins();
+        for (int i = 0; i < CoinManager.coinMultiplicator; i++)
+        {
+            coinManager.InstantiateCoinParticle(collider.transform);
+        }
+    }
 
 	
 }

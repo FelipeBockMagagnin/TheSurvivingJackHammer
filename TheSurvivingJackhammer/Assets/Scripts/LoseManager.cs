@@ -8,8 +8,9 @@ public class LoseManager : MonoBehaviour {
 
 	//restart the game on collision with enemy
 	void OnTriggerEnter2D(Collider2D collider){
-        GameObject.Find("ScoreUi").GetComponent<ManagerUi>().EnableEndGamePanel();
+        GameObject.Find("ScoreUi").GetComponent<ManagerUi>().EnableEndGamePanel();        
         Destroy(charmov.gameObject);
         GameObject.Find("Spawn").GetComponent<SpawnManager>().StopAllCoroutines();
+       
     }
 }
