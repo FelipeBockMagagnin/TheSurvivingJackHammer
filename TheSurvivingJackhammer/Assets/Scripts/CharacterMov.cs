@@ -38,13 +38,7 @@ public class CharacterMov : MonoBehaviour {
 			}
 		}
 
-        //just testing input on pc
-        if(Input.GetMouseButtonDown(0) && styleScript.gameStarted == true)
-        {
-            transform.Rotate(0, 0, -90);
-            playerAnim.SetTrigger("move");
-            swingSound.Play();
-        }
+        
 	}
 
 
