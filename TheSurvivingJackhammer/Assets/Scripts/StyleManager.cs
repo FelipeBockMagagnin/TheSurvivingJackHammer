@@ -86,7 +86,8 @@ public class StyleManager : MonoBehaviour {
     }
 
 	public void SetGameStartedTrue(){
-		if(gameStarted == false){
+        StylePanel.GetComponent<Animator>().SetBool("active", false);
+        if (gameStarted == false){
 			spawnScript.StartGame();
 		}
 		gameStarted = true;
@@ -114,6 +115,7 @@ public class StyleManager : MonoBehaviour {
         {
             Destroy(ActualStartParticle);
         }
+        
     }
 
 	void Update(){

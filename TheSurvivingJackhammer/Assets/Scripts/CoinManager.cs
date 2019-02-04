@@ -7,7 +7,7 @@ public class CoinManager : MonoBehaviour
     private int coins;
     CoinManager instance;
     public static int coinMultiplicator;
-    public static int earnedcoins;
+    public int earnedcoins;
     public GameObject CoinParticle;
 
     bool firstTime = true;
@@ -23,14 +23,15 @@ public class CoinManager : MonoBehaviour
         LoadCoins();
     }
 
-    void ResetCoinMultiplicator()
+    public void ResetCoinMultiplicator()
     {
         coinMultiplicator = 1;
+        earnedcoins = 0;
     }
 
     public void IncreseCoinMultiplicator()
     {
-        coinMultiplicator *= 2;
+        coinMultiplicator += 2;
     }
 
     private void DontDestroyOnLoad()
@@ -50,7 +51,6 @@ public class CoinManager : MonoBehaviour
     {
         if (!firstTime)
         {
-            coins = coins + earnedcoins;
             SaveCoins();
             ResetCoinMultiplicator();
         }
@@ -64,7 +64,9 @@ public class CoinManager : MonoBehaviour
 
     public void SaveCoins()
     {
+        coins += earnedcoins;
         PlayerPrefs.SetInt("Coins", coins);
+        HighScoreManager.CheckScore();
     }
 
     public void InstantiateCoinParticle(Transform transform)
@@ -73,16 +75,10 @@ public class CoinManager : MonoBehaviour
         Destroy(coin, 5);
     }
 
-    public static void IncreaseEarnedCoins()
+    public void IncreaseEarnedCoins()
     {
         earnedcoins += 1 * coinMultiplicator;
-        print(1 * coinMultiplicator);
-        
-    }
-
-    public static void ResetEarnedCoins()
-    {
-        earnedcoins = 0;
+        print("coinmanager earned coins: " + earnedcoins);
     }
 
     private void LoadCoins()

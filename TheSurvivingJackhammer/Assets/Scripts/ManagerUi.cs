@@ -21,35 +21,41 @@ public class ManagerUi : MonoBehaviour {
 	void Start(){
         coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();        
         HighScoreManager.points = 0;
-        coinText.text = "Coins: " + coinManager.GetCoins().ToString();
     }
 	
 	// Update is called once per frame
 	void Update () {
 		score.text = "Score: " + HighScoreManager.points.ToString();
-		HighScoreTxt.text = "Best Score: " + (HighScoreManager.HighScore - 1).ToString();
+        if (HighScoreManager.HighScore < 0)
+        {
+            HighScoreTxt.text = "Best Score: 0";
+        }
+        else
+        {
+            HighScoreTxt.text = "Best Score: " + (HighScoreManager.HighScore - 1).ToString();
+        }
         coinMultiplicator.text = "x" + CoinManager.coinMultiplicator.ToString();
-        earnedCoins.text = "Earned Coins: " + CoinManager.earnedcoins.ToString();
+        coinText.text = "Coins: " + (coinManager.GetCoins()+ coinManager.earnedcoins).ToString();
     }
 
     public void EnableEndGamePanel()
     {        
         EndGamePanel.SetActive(true);       
-        coinManager.ChangeCoins();
-        EndGameTexts[0].text = "Earned Coins: " + (CoinManager.earnedcoins).ToString();
-        EndGameTexts[1].text = "Total Coins: " + coinManager.GetCoins().ToString();
+        
+        EndGameTexts[1].text = "Coins: " + (coinManager.GetCoins()+CoinManager.coinMultiplicator).ToString();
         EndGameTexts[2].text = "Score: " + (HighScoreManager.points).ToString();
         EndGameTexts[3].text = "High Score: " + ((HighScoreManager.HighScore) - 1).ToString();
         EndGameTexts[4].text = "x" + CoinManager.coinMultiplicator.ToString();
-        CoinManager.earnedcoins -= CoinManager.coinMultiplicator;
+        earnedCoins.text = "+ " + coinManager.earnedcoins;
+        print("earnedCoins: " + coinManager.earnedcoins);
         HighScoreManager.points -= 1;   //diminui para nao contar a ultima morte;
+        coinManager.ChangeCoins();
     }
 
     public void DisableEngGamePanel()
     {
         EndGamePanel.SetActive(false);
         HighScoreManager.CheckScore();
-        CoinManager.ResetEarnedCoins();
     }
 
     public void reloadLevel()
@@ -64,6 +70,7 @@ public class ManagerUi : MonoBehaviour {
 
     public void DestroyButtons()
     {
+
         foreach (Button b in DestroyButton)
         {
             Destroy(b.gameObject);
