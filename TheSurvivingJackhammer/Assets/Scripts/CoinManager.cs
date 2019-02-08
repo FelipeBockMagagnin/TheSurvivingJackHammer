@@ -49,6 +49,12 @@ public class CoinManager : MonoBehaviour
         }
     }
 
+    public void DecreaseCoins(int amount)
+    {
+        coins -= amount;
+        Debug.Log("Coins gastos: " + amount + " restando " + coins + " coins");
+        SaveCoins();
+    }
 
     public void ChangeCoins()
     {

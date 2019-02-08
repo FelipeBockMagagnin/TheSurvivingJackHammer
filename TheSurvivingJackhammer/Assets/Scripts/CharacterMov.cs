@@ -39,13 +39,6 @@ public class CharacterMov : MonoBehaviour {
 				swingSound.Play();
 			}
 		}
-
-        if (Input.GetMouseButtonDown(0) && styleScript.gameStarted == true)
-        {
-            transform.Rotate(0, 0, -90);
-            playerAnim.SetTrigger("move");
-            swingSound.Play();
-        }
 	}
 
 	void OnTriggerEnter2D(Collider2D collider){
@@ -64,7 +57,10 @@ public class CharacterMov : MonoBehaviour {
             }
         } else
         {
-            print("conseguiii");
+            styleScript.InstantiateParticle(collider.transform);
+            Destroy(collider.gameObject);
+            difficultyScript.camAnim.SetTrigger("shake");
+            monsterDieSound.Play();
         }
        
        

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9116645006195496371}
   - component: {fileID: 7520926987040656633}
   - component: {fileID: 2038818222962174696}
+  - component: {fileID: 2735452990465707510}
   m_Layer: 0
   m_Name: Enemy1Creepy
   m_TagString: enemy
@@ -119,3 +120,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.1727977, y: 2.1836348}
   m_EdgeRadius: 0
+--- !u!95 &2735452990465707510
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4124833587083510365}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 00d829229b024724c90a1163a96a6af8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

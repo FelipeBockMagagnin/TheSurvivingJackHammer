@@ -7,7 +7,6 @@ public class SpawnManager : MonoBehaviour {
 	public Transform[] spawnPos;
     StyleManager styleManager;
 	public float waitTime;
-
     public float stopWaitTime;
 
 
@@ -25,8 +24,17 @@ public class SpawnManager : MonoBehaviour {
 	}
 
 	IEnumerator create(int index){
-		Transform position = spawnPos[Random.Range(0,spawnPos.Length)];
-        Instantiate(styleManager.enemy1Styles[index], position.position, Quaternion.identity);
+        int thisindex = index;
+        Transform position = spawnPos[Random.Range(0, spawnPos.Length)];
+        if (thisindex == 4)
+        {
+            //neon enemys
+            Instantiate(styleManager.neonEnemys[Random.Range(0,3)], position.position, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(styleManager.enemy1Styles[index], position.position, Quaternion.identity);
+        }        
 		yield return new WaitForSeconds(waitTime); 
 		StartCoroutine(create(index));
 	}

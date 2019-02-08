@@ -10,6 +10,8 @@ public class HighScoreManager : MonoBehaviour {
 	public static int HighScore = 0;
 	public static int index = 0;
 
+    public static int musicIndex;
+
 	
 	public static HighScoreManager instance;	
 

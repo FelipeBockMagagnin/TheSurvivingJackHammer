@@ -23,8 +23,8 @@ public class StyleManager : MonoBehaviour {
     [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;")]
     public GameObject[] enemy1Styles;               //0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;
 
-    [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;")]
-    public AudioSource[] musicStyles;	            //0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;
+
+    public GameObject[] neonEnemys;     //0 - rosa ; 1 - azul; 2 - amarelo
 
 
     GameObject ActualMainChar;		//store the last mainchar instantiated	
@@ -64,7 +64,7 @@ public class StyleManager : MonoBehaviour {
 		if(ActualMainChar != null){
 			Destroy(ActualMainChar);
 		} else {
-			musicScript.FirstSong(HighScoreManager.index);
+            // musicScript.FirstSong(HighScoreManager.index);
 		}
 
 		ActualMainChar = Instantiate(MainCharStyles[index], MainCharSpawn.position, Quaternion.identity);
@@ -79,7 +79,7 @@ public class StyleManager : MonoBehaviour {
         }
         else
         {
-            musicScript.FirstSong(HighScoreManager.index);
+            musicScript.StartSongStyle(musicScript.musicIndex);
         }
 
         ActualMainChar = Instantiate(MainCharStyles[HighScoreManager.index], MainCharSpawn.position, Quaternion.identity);
@@ -132,7 +132,7 @@ public class StyleManager : MonoBehaviour {
 		}
 		ActualMainChar = Instantiate(MainCharStyles[2], MainCharSpawn.position, Quaternion.identity);
 		HighScoreManager.index = 2;
-		musicScript.StartSongStyle(HighScoreManager.index);
+		//musicScript.StartSongStyle(HighScoreManager.index);
 	}
 
 	public void PenChars(){
@@ -141,7 +141,7 @@ public class StyleManager : MonoBehaviour {
 		}
 		ActualMainChar = Instantiate(MainCharStyles[1], MainCharSpawn.position, Quaternion.identity);
 		HighScoreManager.index = 1;
-		musicScript.StartSongStyle(HighScoreManager.index);
+		//musicScript.StartSongStyle(HighScoreManager.index);
 	}
 
 	public void PixelChars()
@@ -151,7 +151,7 @@ public class StyleManager : MonoBehaviour {
 		}
 		ActualMainChar = Instantiate(MainCharStyles[0], MainCharSpawn.position, Quaternion.identity);
 		HighScoreManager.index = 0;
-		musicScript.StartSongStyle(HighScoreManager.index);
+		//musicScript.StartSongStyle(HighScoreManager.index);
 	}
 
     public void CreepyChars()
@@ -162,7 +162,7 @@ public class StyleManager : MonoBehaviour {
         }
         ActualMainChar = Instantiate(MainCharStyles[3], MainCharSpawn.position, Quaternion.identity);
         HighScoreManager.index = 3;
-        musicScript.StartSongStyle(HighScoreManager.index);
+        //musicScript.StartSongStyle(HighScoreManager.index);
     }
 
     public void NeonChar()
@@ -173,7 +173,7 @@ public class StyleManager : MonoBehaviour {
         }
         ActualMainChar = Instantiate(MainCharStyles[4], MainCharSpawn.position, Quaternion.identity);
         HighScoreManager.index = 4;
-        musicScript.StartSongStyle(HighScoreManager.index);
+        //musicScript.StartSongStyle(HighScoreManager.index);
     }
 
     public void ContinuePlaying()
@@ -181,5 +181,10 @@ public class StyleManager : MonoBehaviour {
         spawnScript.ContinueSpawn();
         ActualMainChar = Instantiate(MainCharStyles[HighScoreManager.index], MainCharSpawn.position, Quaternion.identity);
         managerUI.DisableEngGamePanel();
+    }
+
+    public void StartSongStyle(int index)
+    {
+        musicScript.StartSongStyle(index);
     }
 }

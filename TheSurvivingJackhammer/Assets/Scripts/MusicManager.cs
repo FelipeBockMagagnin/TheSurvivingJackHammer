@@ -14,7 +14,15 @@ public class MusicManager : MonoBehaviour {
 	int lastSongIndex = 0;
 	bool firstsong = true;
 
-	void Awake(){
+    public int musicIndex;
+
+    [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;")]
+    public AudioSource[] musicStyles;               //0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;
+
+    void Awake(){
+        ActualMusicPlaying = musicStyles[musicIndex];
+        lastSongIndex = musicIndex;
+        musicStyles[musicIndex].Play();
         styleManager = GameObject.Find("StyleManager").GetComponent<StyleManager>();
         if (instance == null){
 			instance = this;
@@ -22,16 +30,21 @@ public class MusicManager : MonoBehaviour {
 		} else {
 			Destroy(gameObject);
 		}
-	}	
-
-	public void FirstSong(int index){
-		if(firstsong == true){
-            ActualMusicPlaying = styleManager.musicStyles[index];
-			lastSongIndex = index;
-            styleManager.musicStyles[index].Play();
-			firstsong = false;
-		}
 	}
+
+    private void Start()
+    {
+        musicIndex = 0;
+        ActualMusicPlaying = musicStyles[0];
+        lastSongIndex = 0;
+        musicStyles[0].Play();        
+    }
+
+    public void ChangeMusic(int index)
+    {
+        musicIndex = index;
+       StartSongStyle(musicIndex);
+    }
 
 	public void StartSongStyle(int index){
 		if(ActualMusicPlaying != null && index != lastSongIndex){
@@ -39,9 +52,9 @@ public class MusicManager : MonoBehaviour {
 		}
 
 		if(index != lastSongIndex){
-			ActualMusicPlaying = styleManager.musicStyles[index];
+			ActualMusicPlaying = musicStyles[index];
 			lastSongIndex = index;
-            styleManager.musicStyles[index].Play();
+            musicStyles[index].Play();
 		}
 	}
 }
