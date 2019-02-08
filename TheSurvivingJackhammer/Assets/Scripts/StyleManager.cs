@@ -38,6 +38,7 @@ public class StyleManager : MonoBehaviour {
 	public Button startButton;	
 	SpawnManager spawnScript;	
 	MusicManager musicScript;
+    public ManagerUi managerUI;
 
     GameObject StylePanel;
 
@@ -50,7 +51,6 @@ public class StyleManager : MonoBehaviour {
     {
         StylePanel.GetComponent<Animator>().SetBool("active", false);
     }
-
 
 	void Start(){
         StylePanel = GameObject.Find("StylePanel");
@@ -82,7 +82,7 @@ public class StyleManager : MonoBehaviour {
             musicScript.FirstSong(HighScoreManager.index);
         }
 
-        ActualMainChar = Instantiate(MainCharStyles[index], MainCharSpawn.position, Quaternion.identity);
+        ActualMainChar = Instantiate(MainCharStyles[HighScoreManager.index], MainCharSpawn.position, Quaternion.identity);
     }
 
 	public void SetGameStartedTrue(){
@@ -117,17 +117,6 @@ public class StyleManager : MonoBehaviour {
         }
         
     }
-
-	void Update(){
-	
-		if(Input.GetKeyDown(KeyCode.Space) && gameStarted == false){
-			startButton.onClick.Invoke();
-			gameStarted = true;
-			if(ActualStartParticle != null){
-				Destroy(ActualStartParticle);
-			}
-		}
-	}
 
 	void setGameStartedTrue(){
 		gameStarted = true;
@@ -185,5 +174,12 @@ public class StyleManager : MonoBehaviour {
         ActualMainChar = Instantiate(MainCharStyles[4], MainCharSpawn.position, Quaternion.identity);
         HighScoreManager.index = 4;
         musicScript.StartSongStyle(HighScoreManager.index);
+    }
+
+    public void ContinuePlaying()
+    {
+        spawnScript.ContinueSpawn();
+        ActualMainChar = Instantiate(MainCharStyles[HighScoreManager.index], MainCharSpawn.position, Quaternion.identity);
+        managerUI.DisableEngGamePanel();
     }
 }

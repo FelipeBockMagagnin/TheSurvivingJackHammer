@@ -12,6 +12,8 @@ public class ManagerUi : MonoBehaviour {
     public Text coinMultiplicator;
     public Text earnedCoins;
 
+    public Button playAds;
+
 
     public Text[] EndGameTexts; //1 - dinheiro ganho    2 - dinheiro total  3- score    4 - ScoreTotal      5 - coin multiply       6 - point multiply
 
@@ -40,22 +42,30 @@ public class ManagerUi : MonoBehaviour {
 
     public void EnableEndGamePanel()
     {        
-        EndGamePanel.SetActive(true);       
-        
-        EndGameTexts[1].text = "Coins: " + (coinManager.GetCoins()+CoinManager.coinMultiplicator).ToString();
+        EndGamePanel.SetActive(true);               
+        EndGameTexts[1].text = "Coins: " + (coinManager.GetCoins()+coinManager.earnedcoins).ToString();
         EndGameTexts[2].text = "Score: " + (HighScoreManager.points).ToString();
         EndGameTexts[3].text = "High Score: " + ((HighScoreManager.HighScore) - 1).ToString();
         EndGameTexts[4].text = "x" + CoinManager.coinMultiplicator.ToString();
         earnedCoins.text = "+ " + coinManager.earnedcoins;
         print("earnedCoins: " + coinManager.earnedcoins);
-        HighScoreManager.points -= 1;   //diminui para nao contar a ultima morte;
         coinManager.ChangeCoins();
+
     }
 
     public void DisableEngGamePanel()
     {
         EndGamePanel.SetActive(false);
-        HighScoreManager.CheckScore();
+    }
+
+    public void disableShowAds()
+    {
+        playAds.interactable = false;
+    }
+
+    public void enableShowAds()
+    {
+        playAds.interactable = true;
     }
 
     public void reloadLevel()
@@ -81,5 +91,7 @@ public class ManagerUi : MonoBehaviour {
         }
     }
 
+
+    
 }
 

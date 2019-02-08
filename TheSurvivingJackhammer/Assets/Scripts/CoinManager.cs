@@ -14,6 +14,7 @@ public class CoinManager : MonoBehaviour
 
     private void Awake()
     {
+        HighScoreManager.points = 0;
         DontDestroyOnLoad();
         ResetCoinMultiplicator();
     }
@@ -27,6 +28,7 @@ public class CoinManager : MonoBehaviour
     {
         coinMultiplicator = 1;
         earnedcoins = 0;
+        HighScoreManager.points = 0;
     }
 
     public void IncreseCoinMultiplicator()
@@ -47,12 +49,12 @@ public class CoinManager : MonoBehaviour
         }
     }
 
+
     public void ChangeCoins()
     {
         if (!firstTime)
         {
             SaveCoins();
-            ResetCoinMultiplicator();
         }
         firstTime = false;
     }
@@ -65,6 +67,7 @@ public class CoinManager : MonoBehaviour
     public void SaveCoins()
     {
         coins += earnedcoins;
+        earnedcoins = 0;
         PlayerPrefs.SetInt("Coins", coins);
         HighScoreManager.CheckScore();
     }
@@ -91,5 +94,7 @@ public class CoinManager : MonoBehaviour
     {
         coinMultiplicator = (HighScoreManager.points / 10) + 1;    
     }
+
+
 
 }

@@ -11,8 +11,8 @@ public class DifficultyManager : MonoBehaviour {
 	public float initialEnemy1Speed;
 	public float initialWaitTime;
 
-	float Enemy1Speed;
-	float WaitTime;
+	public float Enemy1Speed;
+	public float WaitTime;
 
 	public int difficultyLevel = 1;
 	private float time;	
@@ -38,7 +38,7 @@ public class DifficultyManager : MonoBehaviour {
 		spawnManager.waitTime = WaitTime;
 	}		
 	
-	IEnumerator increaseDifficulty(){
+	public IEnumerator increaseDifficulty(){
 		if(Enemy1Speed <= 6){
 			Enemy1Speed += 0.1f;
 		} else {
@@ -53,4 +53,8 @@ public class DifficultyManager : MonoBehaviour {
 		yield return new WaitForSeconds(time);
 		StartCoroutine(increaseDifficulty());
 	}
+
+   
+
+   
 }

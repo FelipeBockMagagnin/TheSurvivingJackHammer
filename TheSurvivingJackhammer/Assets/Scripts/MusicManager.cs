@@ -26,7 +26,7 @@ public class MusicManager : MonoBehaviour {
 
 	public void FirstSong(int index){
 		if(firstsong == true){
-			ActualMusicPlaying = styleManager.musicStyles[index];
+            ActualMusicPlaying = styleManager.musicStyles[index];
 			lastSongIndex = index;
             styleManager.musicStyles[index].Play();
 			firstsong = false;

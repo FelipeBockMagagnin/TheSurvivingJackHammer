@@ -8,6 +8,8 @@ public class SpawnManager : MonoBehaviour {
     StyleManager styleManager;
 	public float waitTime;
 
+    public float stopWaitTime;
+
 
     private void Start()
     {
@@ -33,4 +35,21 @@ public class SpawnManager : MonoBehaviour {
 		yield return new WaitForSeconds(0.8f); 
 		StartCoroutine(create(index));
 	}
+
+    public void StopSpawning()
+    {
+        this.StopAllCoroutines();
+        GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>().StopAllCoroutines();
+    }
+    
+    public void ContinueSpawn()
+    {
+        foreach (GameObject item in GameObject.FindGameObjectsWithTag("enemy"))
+        {
+            Destroy(item);
+        }
+        StartCoroutine(StartSpawning(HighScoreManager.index));
+        StartCoroutine(GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>().increaseDifficulty());
+    }
+
 }

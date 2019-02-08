@@ -23,7 +23,6 @@ public class HighScoreManager : MonoBehaviour {
 				PlayerPrefs.SetInt("highscore", HighScore);
 			}
 		}
-        points = 0;
 	}	
 
 	void Start(){

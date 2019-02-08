@@ -14,6 +14,8 @@ public class CharacterMov : MonoBehaviour {
 	ChangeBackgroundColor changeScript;
     CoinManager coinManager;
 
+    public BoxCollider2D boxcollider;
+
 	void Start(){
 		changeScript = GameObject.Find("MainCamera").GetComponent<ChangeBackgroundColor>();
 		styleScript = GameObject.Find("StyleManager").GetComponent<StyleManager>();
@@ -22,7 +24,7 @@ public class CharacterMov : MonoBehaviour {
 		swingSound = GameObject.Find("MoveSound").GetComponent<AudioSource>();
         coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
         playerAnim = this.GetComponent<Animator>();
-
+        boxcollider = this.GetComponent<BoxCollider2D>();
         changeScript.ChangeBackGroundIndex();
     }
 
@@ -38,22 +40,34 @@ public class CharacterMov : MonoBehaviour {
 			}
 		}
 
-        
+        if (Input.GetMouseButtonDown(0) && styleScript.gameStarted == true)
+        {
+            transform.Rotate(0, 0, -90);
+            playerAnim.SetTrigger("move");
+            swingSound.Play();
+        }
 	}
 
-
-	void OnTriggerEnter2D(Collider2D collider){		
-		styleScript.InstantiateParticle(collider.transform);
-		Destroy(collider.gameObject);
-		difficultyScript.camAnim.SetTrigger("shake");
-		HighScoreManager.points++;
-		monsterDieSound.Play();
-        changeScript.ChangeBackGroundIndex();
-        coinManager.IncreaseEarnedCoins();
-        for (int i = 0; i < CoinManager.coinMultiplicator; i++)
+	void OnTriggerEnter2D(Collider2D collider){
+        if (this.boxcollider.IsTouching(collider))
         {
-            coinManager.InstantiateCoinParticle(collider.transform);
+            styleScript.InstantiateParticle(collider.transform);
+            Destroy(collider.gameObject);
+            difficultyScript.camAnim.SetTrigger("shake");
+            HighScoreManager.points++;
+            monsterDieSound.Play();
+            changeScript.ChangeBackGroundIndex();
+            coinManager.IncreaseEarnedCoins();
+            for (int i = 0; i < CoinManager.coinMultiplicator; i++)
+            {
+                coinManager.InstantiateCoinParticle(collider.transform);
+            }
+        } else
+        {
+            print("conseguiii");
         }
+       
+       
     }
 
 	
