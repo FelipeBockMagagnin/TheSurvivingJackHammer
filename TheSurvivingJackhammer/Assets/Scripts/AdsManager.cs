@@ -10,6 +10,8 @@ public class AdsManager : MonoBehaviour
 
     private RewardBasedVideoAd rewardBasedVideo;
 
+    bool MultipliAd;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,14 +62,27 @@ public class AdsManager : MonoBehaviour
         this.rewardBasedVideo.LoadAd(request, adUnitId);
     }
 
-    public void UserOptToWatchAd()
+    public void UserOptWatchAdMultipliCoins()
     {
-        
         if (rewardBasedVideo.IsLoaded())
         {
+            MultipliAd = true;
             rewardBasedVideo.Show();
-            
         }
+    }
+
+    public void UserOptToWatchAd()
+    {        
+        if (rewardBasedVideo.IsLoaded())
+        {
+            MultipliAd = false;
+            rewardBasedVideo.Show();            
+        }
+    }
+
+    public void GivePlayerCoinMultiply()
+    {
+        GameObject.Find("ScoreUI").GetComponent<ManagerUi>().GivePlayerMultiplyCoin();
     }
 
     public void GivePlayerReward()
@@ -102,7 +117,17 @@ public class AdsManager : MonoBehaviour
 
     public void HandleRewardBasedVideoRewarded(object sender, Reward args)
     {
-        GivePlayerReward();        
+        if(MultipliAd == false)
+        {
+            GivePlayerReward();
+            MultipliAd = false;
+        }
+        else
+        {
+            GivePlayerCoinMultiply();
+            MultipliAd = false;
+        }
+               
     }
 
     public void HandleRewardBasedVideoLeftApplication(object sender, EventArgs args)

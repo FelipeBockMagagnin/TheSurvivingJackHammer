@@ -11,8 +11,10 @@ public class ManagerUi : MonoBehaviour {
     public Text coinText;
     public Text coinMultiplicator;
     public Text earnedCoins;
+    public Text TimeWithAdsMultipliText;
 
     public Button playAds;
+    public Button playAdsMultiplyCoins;
 
 
     public Text[] EndGameTexts; //1 - dinheiro ganho    2 - dinheiro total  3- score    4 - ScoreTotal      5 - coin multiply       6 - point multiply
@@ -38,6 +40,7 @@ public class ManagerUi : MonoBehaviour {
         }
         coinMultiplicator.text = "x" + CoinManager.coinMultiplicator.ToString();
         coinText.text = "Coins: " + (coinManager.GetCoins()+ coinManager.earnedcoins).ToString();
+        TimeWithAdsMultipliText.text = "Time With Ads Multiplicator: " + coinManager.timeWithMultiplicator.ToString("F2");
     }
 
     public void EnableEndGamePanel()
@@ -56,6 +59,17 @@ public class ManagerUi : MonoBehaviour {
     public void DisableEngGamePanel()
     {
         EndGamePanel.SetActive(false);
+    }
+
+    public void disableSHowAdsMultiply()
+    {
+        playAdsMultiplyCoins.interactable = false;
+    }
+
+    public void GivePlayerMultiplyCoin()
+    {
+        coinManager.IncreaseTimeWithMultiplicator();
+        disableSHowAdsMultiply();
     }
 
     public void disableShowAds()

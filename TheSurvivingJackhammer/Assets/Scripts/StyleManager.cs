@@ -183,6 +183,8 @@ public class StyleManager : MonoBehaviour {
         managerUI.DisableEngGamePanel();
     }
 
+    
+
     public void StartSongStyle(int index)
     {
         musicScript.StartSongStyle(index);

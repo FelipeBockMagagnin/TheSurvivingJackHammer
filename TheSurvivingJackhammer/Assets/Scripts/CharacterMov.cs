@@ -51,7 +51,7 @@ public class CharacterMov : MonoBehaviour {
             monsterDieSound.Play();
             changeScript.ChangeBackGroundIndex();
             coinManager.IncreaseEarnedCoins();
-            for (int i = 0; i < CoinManager.coinMultiplicator; i++)
+            for (int i = 0; i < (CoinManager.coinMultiplicator * coinManager.coinAdsMultiplicator); i++)
             {
                 coinManager.InstantiateCoinParticle(collider.transform);
             }

@@ -8,10 +8,10 @@ public class Item
 {
     public string name;
     public int price;
+    [HideInInspector]
     public bool blocked;
     public Button button;
     public Button PriceButton;
-    public int buyIndex;
 }
 
 public class MarketManager : MonoBehaviour
@@ -20,30 +20,29 @@ public class MarketManager : MonoBehaviour
     CoinManager coinManager;
     MarketManager instance;
 
-    private void Awake()
+    private void Start()
     {
-        if (instance == null)
+        LoadBuy();
+        coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
+    }
+
+    //aumentar moedas em 1000
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            coinManager.DecreaseCoins(-1000);
         }
     }
 
-    private void Start()
-    {
-        coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
-        LoadBuy();
-    }
+    
+
 
     void StartItems()
     {
         foreach (Item item in items)
         {
-            if (item.blocked == false)
+            if (PlayerPrefs.GetInt(item.name) == 1)
             {
                 Debug.Log("Item " + item.name + " iniciou comprado");
                 Destroy(item.PriceButton.gameObject);
@@ -52,10 +51,8 @@ public class MarketManager : MonoBehaviour
             }
             else
             {
-                item.button.interactable = false;
                 Debug.Log("Item " + item.name + " iniciou não comprado");
             }
-
         }
     }
 
@@ -64,7 +61,13 @@ public class MarketManager : MonoBehaviour
         Destroy(item.PriceButton.gameObject);
         item.button.interactable = true;
         item.blocked = false;
+        Debug.Log("item " + item.name + " desbloqueado");
+        SaveUniqueBuy(item);
         //SAVE 
+    }
+
+    void SaveUniqueBuy(Item item){
+        PlayerPrefs.SetInt(item.name, 1);
     }
 
     public void Buy(string name)
@@ -91,12 +94,25 @@ public class MarketManager : MonoBehaviour
 
     public void SaveBuy()
     {
+        foreach (Item item in items)
+        {
+            if(item.blocked == true)
+            {
+                //se estiver bloqueado fica com a key 0
+                PlayerPrefs.SetInt(item.name, 0);
+            }
+            else
+            {
+                //senão 1
+                PlayerPrefs.SetInt(item.name, 1);
+            }
+        }
         
     }
 
     public void LoadBuy()
     {
-
+        StartItems();
     }
 
 

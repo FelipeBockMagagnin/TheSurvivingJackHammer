@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CoinManager : MonoBehaviour
 {
@@ -9,12 +10,19 @@ public class CoinManager : MonoBehaviour
     public static int coinMultiplicator;
     public int earnedcoins;
     public GameObject CoinParticle;
+    MarketManager marketManager;
+
+
+    public int coinAdsMultiplicator;
+    public float timeWithMultiplicator;
+    
 
     bool firstTime = true;
 
     private void Awake()
     {
         HighScoreManager.points = 0;
+        marketManager = GameObject.Find("MarketManager").GetComponent<MarketManager>();
         DontDestroyOnLoad();
         ResetCoinMultiplicator();
     }
@@ -23,6 +31,36 @@ public class CoinManager : MonoBehaviour
     {
         LoadCoins();
     }
+
+    private void Update()
+    {
+        coinMultiplicator = (HighScoreManager.points / 10) + 1;
+        
+    }
+
+    private void FixedUpdate()
+    {
+        CountTimeWithAds();
+    }
+
+    public void IncreaseTimeWithMultiplicator()
+    {
+        timeWithMultiplicator += 300;
+    }
+
+    void CountTimeWithAds()
+    {
+        if(timeWithMultiplicator >= Time.deltaTime)
+        {
+            timeWithMultiplicator -= Time.deltaTime;
+            coinAdsMultiplicator = 2;
+        } 
+        else
+        {
+            coinAdsMultiplicator = 1;
+        }
+    }
+
 
     public void ResetCoinMultiplicator()
     {
@@ -72,6 +110,7 @@ public class CoinManager : MonoBehaviour
 
     public void SaveCoins()
     {
+        marketManager.SaveBuy();
         coins += earnedcoins;
         earnedcoins = 0;
         PlayerPrefs.SetInt("Coins", coins);
@@ -86,7 +125,7 @@ public class CoinManager : MonoBehaviour
 
     public void IncreaseEarnedCoins()
     {
-        earnedcoins += 1 * coinMultiplicator;
+        earnedcoins += 1 * coinMultiplicator * coinAdsMultiplicator;
         print("coinmanager earned coins: " + earnedcoins);
     }
 
@@ -96,11 +135,7 @@ public class CoinManager : MonoBehaviour
         Debug.Log(PlayerPrefs.GetInt("Coins"));
     }
 
-    private void Update()
-    {
-        coinMultiplicator = (HighScoreManager.points / 10) + 1;    
-    }
-
+    
 
 
 }
