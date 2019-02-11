@@ -6,6 +6,9 @@ TagManager:
   tags:
   - enemy
   - playAds
+  - Ads
+  - CoinManager
+  - UiManager
   layers:
   - Default
   - TransparentFX

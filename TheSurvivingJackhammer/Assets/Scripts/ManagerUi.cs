@@ -11,7 +11,6 @@ public class ManagerUi : MonoBehaviour {
     public Text coinText;
     public Text coinMultiplicator;
     public Text earnedCoins;
-    public Text TimeWithAdsMultipliText;
 
     public Button playAds;
     public Button playAdsMultiplyCoins;
@@ -21,9 +20,12 @@ public class ManagerUi : MonoBehaviour {
 
     public GameObject EndGamePanel;
     CoinManager coinManager;
+    AdsManager adsManager;
+    int earnedcoins;
 
 	void Start(){
-        coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();        
+        coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
+        adsManager = GameObject.Find("AdsManager").GetComponent<AdsManager>();
         HighScoreManager.points = 0;
     }
 	
@@ -40,7 +42,6 @@ public class ManagerUi : MonoBehaviour {
         }
         coinMultiplicator.text = "x" + CoinManager.coinMultiplicator.ToString();
         coinText.text = "Coins: " + (coinManager.GetCoins()+ coinManager.earnedcoins).ToString();
-        TimeWithAdsMultipliText.text = "Time With Ads Multiplicator: " + coinManager.timeWithMultiplicator.ToString("F2");
     }
 
     public void EnableEndGamePanel()
@@ -52,8 +53,13 @@ public class ManagerUi : MonoBehaviour {
         EndGameTexts[4].text = "x" + CoinManager.coinMultiplicator.ToString();
         earnedCoins.text = "+ " + coinManager.earnedcoins;
         print("earnedCoins: " + coinManager.earnedcoins);
+        this.earnedcoins = coinManager.earnedcoins;
         coinManager.ChangeCoins();
+    }
 
+    public void CallPropagandaMultiply()
+    {
+        adsManager.GivePlayerCoinMultiply();
     }
 
     public void DisableEngGamePanel()
@@ -66,10 +72,20 @@ public class ManagerUi : MonoBehaviour {
         playAdsMultiplyCoins.interactable = false;
     }
 
+    public void EnableShowAdsMultiply()
+    {
+        playAdsMultiplyCoins.interactable = true;
+    }
+
     public void GivePlayerMultiplyCoin()
     {
-        coinManager.IncreaseTimeWithMultiplicator();
-        disableSHowAdsMultiply();
+        coinManager.earnedcoins = this.earnedcoins * 2;
+        coinManager.ChangeCoins();
+        EndGameTexts[1].text = "Coins: " + (coinManager.GetCoins()).ToString();
+        EndGameTexts[2].text = "Score: " + (HighScoreManager.points).ToString();
+        EndGameTexts[3].text = "High Score: " + ((HighScoreManager.HighScore) - 1).ToString();
+        EndGameTexts[4].text = "x" + CoinManager.coinMultiplicator.ToString();
+        earnedCoins.text = "+ " + this.earnedcoins * 2;    
     }
 
     public void disableShowAds()

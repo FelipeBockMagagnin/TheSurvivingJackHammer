@@ -39,6 +39,13 @@ public class CharacterMov : MonoBehaviour {
 				swingSound.Play();
 			}
 		}
+
+        if (Input.GetKeyDown(KeyCode.Space) && styleScript.gameStarted == true)
+        {
+            transform.Rotate(0, 0, -90);
+            playerAnim.SetTrigger("move");
+            swingSound.Play();
+        }
 	}
 
 	void OnTriggerEnter2D(Collider2D collider){
@@ -51,7 +58,7 @@ public class CharacterMov : MonoBehaviour {
             monsterDieSound.Play();
             changeScript.ChangeBackGroundIndex();
             coinManager.IncreaseEarnedCoins();
-            for (int i = 0; i < (CoinManager.coinMultiplicator * coinManager.coinAdsMultiplicator); i++)
+            for (int i = 0; i < (CoinManager.coinMultiplicator); i++)
             {
                 coinManager.InstantiateCoinParticle(collider.transform);
             }

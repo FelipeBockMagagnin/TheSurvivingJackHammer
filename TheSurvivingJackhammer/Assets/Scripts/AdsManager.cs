@@ -9,6 +9,7 @@ public class AdsManager : MonoBehaviour
 {
 
     private RewardBasedVideoAd rewardBasedVideo;
+    AdsManager instance;
 
     bool MultipliAd;
 
@@ -42,9 +43,22 @@ public class AdsManager : MonoBehaviour
         rewardBasedVideo.OnAdLeavingApplication += HandleRewardBasedVideoLeftApplication;
 
         RequestRewardBasedVideo();
+
+        
     }
 
-  
+    private void Awake()
+    {       
+            GameObject[] objs = GameObject.FindGameObjectsWithTag("Ads");
+
+            if (objs.Length > 1)
+            {
+                Destroy(this.gameObject);
+            }
+
+            DontDestroyOnLoad(this.gameObject);
+        
+    }
 
     private void RequestRewardBasedVideo()
     {
@@ -64,15 +78,18 @@ public class AdsManager : MonoBehaviour
 
     public void UserOptWatchAdMultipliCoins()
     {
+        MultipliAd = true;
         if (rewardBasedVideo.IsLoaded())
         {
             MultipliAd = true;
             rewardBasedVideo.Show();
         }
+
     }
 
     public void UserOptToWatchAd()
-    {        
+    {
+        MultipliAd = false;
         if (rewardBasedVideo.IsLoaded())
         {
             MultipliAd = false;
@@ -82,7 +99,7 @@ public class AdsManager : MonoBehaviour
 
     public void GivePlayerCoinMultiply()
     {
-        GameObject.Find("ScoreUI").GetComponent<ManagerUi>().GivePlayerMultiplyCoin();
+        GameObject.FindGameObjectWithTag("UiManager").GetComponent<ManagerUi>().GivePlayerMultiplyCoin();
     }
 
     public void GivePlayerReward()
@@ -122,7 +139,7 @@ public class AdsManager : MonoBehaviour
             GivePlayerReward();
             MultipliAd = false;
         }
-        else
+        else if(MultipliAd == true)
         {
             GivePlayerCoinMultiply();
             MultipliAd = false;

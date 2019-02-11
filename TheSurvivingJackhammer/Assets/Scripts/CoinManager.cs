@@ -11,10 +11,6 @@ public class CoinManager : MonoBehaviour
     public int earnedcoins;
     public GameObject CoinParticle;
     MarketManager marketManager;
-
-
-    public int coinAdsMultiplicator;
-    public float timeWithMultiplicator;
     
 
     bool firstTime = true;
@@ -38,29 +34,6 @@ public class CoinManager : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
-    {
-        CountTimeWithAds();
-    }
-
-    public void IncreaseTimeWithMultiplicator()
-    {
-        timeWithMultiplicator += 300;
-    }
-
-    void CountTimeWithAds()
-    {
-        if(timeWithMultiplicator >= Time.deltaTime)
-        {
-            timeWithMultiplicator -= Time.deltaTime;
-            coinAdsMultiplicator = 2;
-        } 
-        else
-        {
-            coinAdsMultiplicator = 1;
-        }
-    }
-
 
     public void ResetCoinMultiplicator()
     {
@@ -76,15 +49,14 @@ public class CoinManager : MonoBehaviour
 
     private void DontDestroyOnLoad()
     {
-        if (instance == null)
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("CoinManager");
+
+        if (objs.Length > 1)
         {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            Destroy(this.gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void DecreaseCoins(int amount)
@@ -125,7 +97,7 @@ public class CoinManager : MonoBehaviour
 
     public void IncreaseEarnedCoins()
     {
-        earnedcoins += 1 * coinMultiplicator * coinAdsMultiplicator;
+        earnedcoins += 1 * coinMultiplicator;
         print("coinmanager earned coins: " + earnedcoins);
     }
 

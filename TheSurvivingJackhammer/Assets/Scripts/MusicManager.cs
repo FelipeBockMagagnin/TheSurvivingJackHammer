@@ -6,14 +6,11 @@ public class MusicManager : MonoBehaviour {
 
 	
 	AudioSource ActualMusicPlaying;
-    StyleManager styleManager;
 
 
     static MusicManager instance;
 
 	int lastSongIndex = 0;
-	bool firstsong = true;
-
     public int musicIndex;
 
     [Header("0 - PixelArt; 1 - Pen; 2 - WaterColor; 3 - Creepy; 4 - Neon;")]
@@ -23,7 +20,6 @@ public class MusicManager : MonoBehaviour {
         ActualMusicPlaying = musicStyles[musicIndex];
         lastSongIndex = musicIndex;
         musicStyles[musicIndex].Play();
-        styleManager = GameObject.Find("StyleManager").GetComponent<StyleManager>();
         if (instance == null){
 			instance = this;
 			DontDestroyOnLoad(this.gameObject);
@@ -42,7 +38,7 @@ public class MusicManager : MonoBehaviour {
 
     public void ChangeMusic(int index)
     {
-        musicIndex = index;
+       musicIndex = index;
        StartSongStyle(musicIndex);
     }
 
@@ -52,6 +48,7 @@ public class MusicManager : MonoBehaviour {
 		}
 
 		if(index != lastSongIndex){
+            musicIndex = index;
 			ActualMusicPlaying = musicStyles[index];
 			lastSongIndex = index;
             musicStyles[index].Play();
