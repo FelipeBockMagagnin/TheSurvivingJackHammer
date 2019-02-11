@@ -21,35 +21,46 @@ public class ManagerUi : MonoBehaviour {
     public GameObject EndGamePanel;
     CoinManager coinManager;
     AdsManager adsManager;
+    StyleManager styleManager;
     int earnedcoins;
 
 	void Start(){
         coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
         adsManager = GameObject.Find("AdsManager").GetComponent<AdsManager>();
+        styleManager = GameObject.Find("StyleManager").GetComponent<StyleManager>();
         HighScoreManager.points = 0;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		score.text = "Score: " + HighScoreManager.points.ToString();
+		score.text = HighScoreManager.points.ToString();
         if (HighScoreManager.HighScore < 0)
         {
-            HighScoreTxt.text = "Best Score: 0";
+            HighScoreTxt.text = "0";
         }
         else
         {
-            HighScoreTxt.text = "Best Score: " + (HighScoreManager.HighScore - 1).ToString();
+            HighScoreTxt.text = (HighScoreManager.HighScore - 1).ToString();
         }
-        coinMultiplicator.text = "x" + CoinManager.coinMultiplicator.ToString();
-        coinText.text = "Coins: " + (coinManager.GetCoins()+ coinManager.earnedcoins).ToString();
+
+        if(styleManager.gameStarted == false)
+        {
+            coinMultiplicator.text = " ";
+        } 
+        else
+        {
+            coinMultiplicator.text = "x" + CoinManager.coinMultiplicator.ToString();
+        }
+        
+        coinText.text = (coinManager.GetCoins()+ coinManager.earnedcoins).ToString();
     }
 
     public void EnableEndGamePanel()
     {        
         EndGamePanel.SetActive(true);               
-        EndGameTexts[1].text = "Coins: " + (coinManager.GetCoins()+coinManager.earnedcoins).ToString();
-        EndGameTexts[2].text = "Score: " + (HighScoreManager.points).ToString();
-        EndGameTexts[3].text = "High Score: " + ((HighScoreManager.HighScore) - 1).ToString();
+        EndGameTexts[1].text = (coinManager.GetCoins()+coinManager.earnedcoins).ToString();
+        EndGameTexts[2].text = (HighScoreManager.points).ToString();
+        EndGameTexts[3].text = ((HighScoreManager.HighScore) - 1).ToString();
         EndGameTexts[4].text = "x" + CoinManager.coinMultiplicator.ToString();
         earnedCoins.text = "+ " + coinManager.earnedcoins;
         print("earnedCoins: " + coinManager.earnedcoins);
@@ -107,6 +118,7 @@ public class ManagerUi : MonoBehaviour {
     //DESTROY BUTTONS ON START
     public Button[] DestroyButton;
     public Text[] texts;
+    public Image[] images;
 
     public void DestroyButtons()
     {
@@ -118,6 +130,10 @@ public class ManagerUi : MonoBehaviour {
         foreach (Text t in texts)
         {
             Destroy(t.gameObject);
+        }
+        foreach (Image i in images)
+        {
+            Destroy(i.gameObject);
         }
     }
 
