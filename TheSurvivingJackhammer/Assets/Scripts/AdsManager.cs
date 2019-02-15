@@ -11,13 +11,11 @@ public class AdsManager : MonoBehaviour
     private RewardBasedVideoAd rewardBasedVideo;
     AdsManager instance;
 
-    bool MultipliAd;
-
     // Start is called before the first frame update
     void Start()
     {
         #if UNITY_ANDROID
-        string appid = "ca-app-pub-3940256099942544/5224354917";
+        string appid = "ca-app-pub-8861904667614686~2526420754";
         #else
         string appid = "not"
         #endif
@@ -42,13 +40,12 @@ public class AdsManager : MonoBehaviour
         // Called when the ad click caused the user to leave the application.
         rewardBasedVideo.OnAdLeavingApplication += HandleRewardBasedVideoLeftApplication;
 
-        RequestRewardBasedVideo();
-
-        
+        RequestRewardBasedVideo();        
     }
 
     private void Awake()
-    {       
+    {
+
             GameObject[] objs = GameObject.FindGameObjectsWithTag("Ads");
 
             if (objs.Length > 1)
@@ -78,22 +75,13 @@ public class AdsManager : MonoBehaviour
 
     public void UserOptWatchAdMultipliCoins()
     {
-        MultipliAd = true;
         if (rewardBasedVideo.IsLoaded())
         {
-            MultipliAd = true;
             rewardBasedVideo.Show();
-        }
-
-    }
-
-    public void UserOptToWatchAd()
-    {
-        MultipliAd = false;
-        if (rewardBasedVideo.IsLoaded())
+            Debug.Log("ad foi carregao e vai ser mostrado");
+        } else
         {
-            MultipliAd = false;
-            rewardBasedVideo.Show();            
+            Debug.Log("ad nao foi carregado e nao vai ser mostrado");
         }
     }
 
@@ -109,12 +97,12 @@ public class AdsManager : MonoBehaviour
 
     public void HandleRewardBasedVideoLoaded(object sender, EventArgs args)
     {
-        MonoBehaviour.print("HandleRewardBasedVideoLoaded event received");
+        MonoBehaviour.print("O CIDEO AD FOI CARREGADO");
     }
 
     public void HandleRewardBasedVideoFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-        //
+        this.RequestRewardBasedVideo();
     }
 
     public void HandleRewardBasedVideoOpened(object sender, EventArgs args)
@@ -128,23 +116,12 @@ public class AdsManager : MonoBehaviour
 
     public void HandleRewardBasedVideoClosed(object sender, EventArgs args)
     {
-        MonoBehaviour.print("HandleRewardBasedVideoClosed event received");
         this.RequestRewardBasedVideo();
     }
 
     public void HandleRewardBasedVideoRewarded(object sender, Reward args)
-    {
-        if(MultipliAd == false)
-        {
-            GivePlayerReward();
-            MultipliAd = false;
-        }
-        else if(MultipliAd == true)
-        {
-            GivePlayerCoinMultiply();
-            MultipliAd = false;
-        }
-               
+    {    
+        GivePlayerCoinMultiply();          
     }
 
     public void HandleRewardBasedVideoLeftApplication(object sender, EventArgs args)

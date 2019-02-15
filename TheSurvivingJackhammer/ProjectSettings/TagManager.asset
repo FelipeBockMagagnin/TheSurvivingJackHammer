@@ -9,6 +9,7 @@ TagManager:
   - Ads
   - CoinManager
   - UiManager
+  - InterstitialAds
   layers:
   - Default
   - TransparentFX
