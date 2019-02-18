@@ -31,7 +31,7 @@ public class DifficultyManager : MonoBehaviour {
 		Enemy1Speed = initialEnemy1Speed;
 		WaitTime = initialWaitTime;
 		StartCoroutine(increaseDifficulty());
-		time = 1; //a cada 1 segundo aumenta dificuldade;	
+		time = 0.8f; //a cada 1 segundo aumenta dificuldade;	
 	}
 
 	void Update () {
@@ -39,15 +39,15 @@ public class DifficultyManager : MonoBehaviour {
 	}		
 	
 	public IEnumerator increaseDifficulty(){
-		if(Enemy1Speed <= 6){
-			Enemy1Speed += 0.1f;
+		if(Enemy1Speed <= 6.5f){
+			Enemy1Speed += 0.2f;
 		} else {
-			Enemy1Speed += 0.03f;
+			Enemy1Speed += 0.06f;
 		}
-		if(WaitTime >= 0.7){
-			WaitTime -= 0.03f;	
+		if(WaitTime >= 0.8){
+			WaitTime -= 0.06f;	
 		} else {
-			WaitTime -= 0.003f;
+			WaitTime -= 0.006f;
 		}
 		difficultyLevel++;
 		yield return new WaitForSeconds(time);

@@ -20,12 +20,6 @@ public class MarketManager : MonoBehaviour
     CoinManager coinManager;
     MarketManager instance;
 
-    private void Start()
-    {
-        LoadBuy();
-        coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
-    }
-
     //aumentar moedas em 1000
     private void Update()
     {
@@ -35,13 +29,27 @@ public class MarketManager : MonoBehaviour
         }
     }
 
-    
+    private void Awake()
+    {
+        coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
+        StartItems();        
+    }
 
-
-    void StartItems()
+    public void StartItems()
     {
         foreach (Item item in items)
         {
+
+            if (PlayerPrefs.HasKey(item.name))
+            {
+
+            }
+            else
+            {
+                PlayerPrefs.SetInt(item.name, 0);
+            }
+
+
             if (PlayerPrefs.GetInt(item.name) == 1)
             {
                 Debug.Log("Item " + item.name + " iniciou comprado");
@@ -63,7 +71,8 @@ public class MarketManager : MonoBehaviour
         item.blocked = false;
         Debug.Log("item " + item.name + " desbloqueado");
         SaveUniqueBuy(item);
-        //SAVE 
+        SaveBuy();
+        //SAVE
     }
 
     void SaveUniqueBuy(Item item){
@@ -108,11 +117,6 @@ public class MarketManager : MonoBehaviour
             }
         }
         
-    }
-
-    public void LoadBuy()
-    {
-        StartItems();
     }
 
 

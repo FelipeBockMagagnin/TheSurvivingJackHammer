@@ -120,6 +120,12 @@ public class ManagerUi : MonoBehaviour {
         SceneManager.LoadScene(scene.name);
     }
 
+
+    public void resetAtributes()
+    {
+        coinManager.ResetCoinMultiplicator();
+    }
+
     //DESTROY BUTTONS ON START
     public Button[] DestroyButton;
     public Text[] texts;

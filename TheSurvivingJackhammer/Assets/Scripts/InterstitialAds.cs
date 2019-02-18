@@ -23,12 +23,13 @@ private InterstitialAd interstitial;
     private void Start()
     {
         RequestInterstitial();
+        PlayerPrefs.SetInt("InterstitialAds", 1);
     }
 
     private void RequestInterstitial()
     {
         #if UNITY_ANDROID
-            string adUnitId = "ca-app-pub-3940256099942544/8691691433";
+            string adUnitId = "ca-app-pub-8861904667614686/8228309151";
         #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/4411468910";
         #else
