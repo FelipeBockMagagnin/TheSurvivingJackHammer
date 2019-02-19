@@ -11,15 +11,9 @@ public class ManagerUi : MonoBehaviour {
     public Text coinText;
     public Text coinMultiplicator;
     public Text earnedCoins;
-
     public Button playAdsMultiplyCoins;
-
-
     public Text[] EndGameTexts; //1 - dinheiro ganho    2 - dinheiro total  3- score    4 - ScoreTotal      5 - coin multiply       6 - point multiply
-
     public GameObject EndGamePanel;
-
-
     CoinManager coinManager;
     AdsManager adsManager;
     InterstitialAds interstitialAds;
@@ -34,7 +28,6 @@ public class ManagerUi : MonoBehaviour {
         HighScoreManager.points = 0;
     }
 	
-	// Update is called once per frame
 	void Update () {
 		score.text = HighScoreManager.points.ToString();
         if (HighScoreManager.HighScore < 0)
@@ -58,11 +51,17 @@ public class ManagerUi : MonoBehaviour {
         coinText.text = (coinManager.GetCoins()+ coinManager.earnedcoins).ToString();
     }
 
+    /// <summary>
+    /// Mostra o ad ao final do nivel
+    /// </summary>
     public void ShowInterstitialAd()
     {
         interstitialAds.ShowInterstitalAd();
     }
 
+    /// <summary>
+    /// Ativa o painel final do jogo
+    /// </summary>
     public void EnableEndGamePanel()
     {
         ShowInterstitialAd();
@@ -78,31 +77,49 @@ public class ManagerUi : MonoBehaviour {
         EnableShowAdsMultiply();
     }
 
+    /// <summary>
+    /// Chama a propaganda de multiplicar coins
+    /// </summary>
     public void CallPropagandaMultiply()
     {
         adsManager.GivePlayerCoinMultiply();
     }
 
+    /// <summary>
+    /// Desativa o painel final
+    /// </summary>
     public void DisableEngGamePanel()
     {
         EndGamePanel.SetActive(false);
     }
 
+    /// <summary>
+    /// Desativa o botão de mostrar ads multiplicador
+    /// </summary>
     public void disableSHowAdsMultiply()
     {
         playAdsMultiplyCoins.interactable = false;
     }
 
+    /// <summary>
+    /// Usuario optou por assistir ad
+    /// </summary>
     public void userOptToWatchAd()
     {
         adsManager.UserOptWatchAdMultipliCoins();
     }
 
+    /// <summary>
+    /// Ativa botão de assistir Ad e multiplicar
+    /// </summary>
     public void EnableShowAdsMultiply()
     {
         playAdsMultiplyCoins.interactable = true;
     }
 
+    /// <summary>
+    /// Da ao player o multiplicador de coins
+    /// </summary>
     public void GivePlayerMultiplyCoin()
     {
         coinManager.earnedcoins = this.earnedcoins * 2;
@@ -114,13 +131,18 @@ public class ManagerUi : MonoBehaviour {
         earnedCoins.text = "+ " + this.earnedcoins * 2;    
     }
 
+    /// <summary>
+    /// Recarrega o nivel
+    /// </summary>
     public void reloadLevel()
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
 
-
+    /// <summary>
+    /// Reseta os atributos do coin manager
+    /// </summary>
     public void resetAtributes()
     {
         coinManager.ResetCoinMultiplicator();
@@ -131,6 +153,9 @@ public class ManagerUi : MonoBehaviour {
     public Text[] texts;
     public Image[] images;
 
+    /// <summary>
+    /// Destroy os botões ao começar o jogo
+    /// </summary>
     public void DestroyButtons()
     {
 
@@ -146,9 +171,6 @@ public class ManagerUi : MonoBehaviour {
         {
             Destroy(i.gameObject);
         }
-    }
-
-
-    
+    }    
 }
 

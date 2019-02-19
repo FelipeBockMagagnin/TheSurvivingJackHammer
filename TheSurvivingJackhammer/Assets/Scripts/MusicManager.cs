@@ -36,12 +36,20 @@ public class MusicManager : MonoBehaviour {
         musicStyles[0].Play();        
     }
 
+    /// <summary>
+    /// Troca a musica
+    /// </summary>
+    /// <param name="index"></param>
     public void ChangeMusic(int index)
     {
        musicIndex = index;
        StartSongStyle(musicIndex);
     }
 
+    /// <summary>
+    /// Inicia a musica sem repetir
+    /// </summary>
+    /// <param name="index"></param>
 	public void StartSongStyle(int index){
 		if(ActualMusicPlaying != null && index != lastSongIndex){
 			ActualMusicPlaying.Stop();

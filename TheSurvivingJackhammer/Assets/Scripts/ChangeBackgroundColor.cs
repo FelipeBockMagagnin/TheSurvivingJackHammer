@@ -13,6 +13,9 @@ public class ChangeBackgroundColor : MonoBehaviour {
     public GameObject creepyBackGround;
     public Color[] colorsNeon;   
 
+    /// <summary>
+    /// Troca o array de cores ao fundo de acordo com o estilo
+    /// </summary>
     public void ChangeBackGroundIndex(){
 		if(HighScoreManager.index == 0)
         {
@@ -46,9 +49,12 @@ public class ChangeBackgroundColor : MonoBehaviour {
         }
 	}
 
+    /// <summary>
+    /// troca a cor de fundo
+    /// </summary>
+    /// <param name="colors"></param>
     void ChangeBackground(Color[] colors)
     {
-
         //diminui chance de repetir cor
         int thisTurnIndex = index;
         index = Random.Range(0, colors.Length);
@@ -72,8 +78,6 @@ public class ChangeBackgroundColor : MonoBehaviour {
             }
         }
 
-
-
         //normal change of colors
         cam.backgroundColor = colors[index];
         if (index == (colors.Length - 1) || colors.Length == 1)
@@ -86,6 +90,9 @@ public class ChangeBackgroundColor : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Ativa o background creepy
+    /// </summary>
     void CreepyBackGround()
     {
         creepyBackGround.SetActive(true);

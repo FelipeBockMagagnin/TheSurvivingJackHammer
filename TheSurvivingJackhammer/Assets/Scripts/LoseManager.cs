@@ -6,7 +6,10 @@ public class LoseManager : MonoBehaviour {
 
 	public CharacterMov charmov;
 
-	//restart the game on collision with enemy
+	/// <summary>
+    /// Restarta o jogo ao colidir com inimigo
+    /// </summary>
+    /// <param name="collider"></param>
 	void OnTriggerEnter2D(Collider2D collider){
         if (collider.CompareTag("enemy"))
         {

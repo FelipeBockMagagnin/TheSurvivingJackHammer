@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class AdsManager : MonoBehaviour
 {
-
     private RewardBasedVideoAd rewardBasedVideo;
     AdsManager instance;
 
@@ -58,6 +57,9 @@ public class AdsManager : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Pede um anuncio para carregar e ficar em espera
+    /// </summary>
     private void RequestRewardBasedVideo()
     {
         #if UNITY_ANDROID
@@ -74,6 +76,9 @@ public class AdsManager : MonoBehaviour
         this.rewardBasedVideo.LoadAd(request, adUnitId);
     }
 
+    /// <summary>
+    /// Usuario optou por assistir um anuncio, o anuncio é chamado
+    /// </summary>
     public void UserOptWatchAdMultipliCoins()
     {
         if (rewardBasedVideo.IsLoaded())
@@ -86,50 +91,88 @@ public class AdsManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Da a recompensa ao usuario, chama o metodo localizado no UImanager
+    /// </summary>
     public void GivePlayerCoinMultiply()
     {
         GameObject.FindGameObjectWithTag("UiManager").GetComponent<ManagerUi>().GivePlayerMultiplyCoin();
     }
 
+    /// <summary>
+    /// Metodo não mais utilizado, dava uma chance de jogar novamente
+    /// </summary>
     public void GivePlayerReward()
     {
-        GameObject.Find("StyleManager").GetComponent<StyleManager>().ContinuePlaying();
+        //GameObject.Find("StyleManager").GetComponent<StyleManager>().ContinuePlaying();
     }
 
+    /// <summary>
+    /// Caso o video foi carregado
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
     public void HandleRewardBasedVideoLoaded(object sender, EventArgs args)
     {
-        MonoBehaviour.print("O CIDEO AD FOI CARREGADO");
+        MonoBehaviour.print("O VIDEO AD FOI CARREGADO");
     }
 
+    /// <summary>
+    /// Video teve um problema ao carregar
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
     public void HandleRewardBasedVideoFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
         this.RequestRewardBasedVideo();
     }
 
+    /// <summary>
+    /// Video foi aberto
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
     public void HandleRewardBasedVideoOpened(object sender, EventArgs args)
     { 
     }
 
+    /// <summary>
+    /// Video começou
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
     public void HandleRewardBasedVideoStarted(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleRewardBasedVideoStarted event received");
     }
 
+    /// <summary>
+    /// Video fechou
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
     public void HandleRewardBasedVideoClosed(object sender, EventArgs args)
     {
         this.RequestRewardBasedVideo();
     }
 
+    /// <summary>
+    /// Video de recompensa terminou
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
     public void HandleRewardBasedVideoRewarded(object sender, Reward args)
     {    
         GivePlayerCoinMultiply();          
     }
 
+    /// <summary>
+    /// app foi fechado no meio do video
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
     public void HandleRewardBasedVideoLeftApplication(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleRewardBasedVideoLeftApplication event received");
     }
-
-
-
 }

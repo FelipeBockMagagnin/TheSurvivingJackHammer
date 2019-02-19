@@ -42,11 +42,17 @@ public class StyleManager : MonoBehaviour {
 
     GameObject StylePanel;
 
+    /// <summary>
+    /// Ativa o painel de estilo
+    /// </summary>
     public void activeStylePanel()
     {
         StylePanel.GetComponent<Animator>().SetBool("active", true);
     }
 
+    /// <summary>
+    /// Desativa o painel de estilo
+    /// </summary>
     public void disableStylePanel()
     {
         StylePanel.GetComponent<Animator>().SetBool("active", false);
@@ -71,6 +77,9 @@ public class StyleManager : MonoBehaviour {
 		ActualStartParticle = Instantiate(StartParticleSystem[HighScoreManager.index].gameObject, MainCharSpawn.position, Quaternion.identity);
 	}
 
+    /// <summary>
+    /// Restarta o atributo dessa classe
+    /// </summary>
     public void retartGame()
     {
         if (ActualMainChar != null)
@@ -85,6 +94,9 @@ public class StyleManager : MonoBehaviour {
         ActualMainChar = Instantiate(MainCharStyles[HighScoreManager.index], MainCharSpawn.position, Quaternion.identity);
     }
 
+    /// <summary>
+    /// Define o jogo como iniciado
+    /// </summary>
 	public void SetGameStartedTrue(){
         StylePanel.GetComponent<Animator>().SetBool("active", false);
         if (gameStarted == false){
@@ -94,12 +106,18 @@ public class StyleManager : MonoBehaviour {
 		
 	}
 
+    /// <summary>
+    /// Destroy a particula do inicio
+    /// </summary>
 	public void DestroyParticle(){
 		if(ActualStartParticle != null){
 			Destroy(ActualStartParticle);
 		}
 	}
 
+    /// <summary>
+    /// Troca a particula do inicio
+    /// </summary>
 	public void ChangeStartParticle(){
 		if(ActualStartParticle != null){
 			Destroy(ActualStartParticle);
@@ -107,6 +125,9 @@ public class StyleManager : MonoBehaviour {
 		ActualStartParticle = Instantiate(StartParticleSystem[HighScoreManager.index].gameObject, MainCharSpawn.position, Quaternion.identity);
 	}
 
+    /// <summary>
+    /// Começa o jogo em si
+    /// </summary>
     public void StartGame()
     {
         startButton.onClick.Invoke();
@@ -118,10 +139,17 @@ public class StyleManager : MonoBehaviour {
         
     }
 
+    /// <summary>
+    /// Starta o jogo 
+    /// </summary>
 	void setGameStartedTrue(){
 		gameStarted = true;
 	}
 
+    /// <summary>
+    /// Inicia a particula do inicio
+    /// </summary>
+    /// <param name="enemyPosition"></param>
 	public void InstantiateParticle(Transform enemyPosition){
 		Instantiate(ParticleStyle[HighScoreManager.index], enemyPosition.position, Quaternion.identity);
 	}
@@ -176,6 +204,9 @@ public class StyleManager : MonoBehaviour {
         //musicScript.StartSongStyle(HighScoreManager.index);
     }
 
+    /// <summary>
+    /// Continua jogando
+    /// </summary>
     public void ContinuePlaying()
     {
         spawnScript.ContinueSpawn();
@@ -183,8 +214,10 @@ public class StyleManager : MonoBehaviour {
         managerUI.DisableEngGamePanel();
     }
 
-    
-
+    /// <summary>
+    /// Inicia a musica
+    /// </summary>
+    /// <param name="index"></param>
     public void StartSongStyle(int index)
     {
         musicScript.StartSongStyle(index);

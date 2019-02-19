@@ -27,19 +27,26 @@ public class DifficultyManager : MonoBehaviour {
 		PlayerPrefs.Save();
 	}
 
+    /// <summary>
+    /// Inicia os componentes, botando os valores iniciais em suas respectivas variaveis
+    /// </summary>
 	public void StartGame(){
 		Enemy1Speed = initialEnemy1Speed;
 		WaitTime = initialWaitTime;
 		StartCoroutine(increaseDifficulty());
-		time = 0.8f; //a cada 1 segundo aumenta dificuldade;	
+		time = 1f; //a cada 1 segundo aumenta dificuldade;	
 	}
 
 	void Update () {
 		spawnManager.waitTime = WaitTime;
 	}		
 	
+    /// <summary>
+    /// Aumenta a dificuldade do jogo gradualmente
+    /// </summary>
+    /// <returns></returns>
 	public IEnumerator increaseDifficulty(){
-		if(Enemy1Speed <= 6.5f){
+		if(Enemy1Speed <= 6f){
 			Enemy1Speed += 0.2f;
 		} else {
 			Enemy1Speed += 0.06f;
@@ -52,9 +59,5 @@ public class DifficultyManager : MonoBehaviour {
 		difficultyLevel++;
 		yield return new WaitForSeconds(time);
 		StartCoroutine(increaseDifficulty());
-	}
-
-   
-
-   
+	}   
 }

@@ -20,21 +20,15 @@ public class MarketManager : MonoBehaviour
     CoinManager coinManager;
     MarketManager instance;
 
-    //aumentar moedas em 1000
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            coinManager.DecreaseCoins(-1000);
-        }
-    }
-
     private void Awake()
     {
         coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
         StartItems();        
     }
 
+    /// <summary>
+    /// Starta os itens de acordo com sua disponibilidade
+    /// </summary>
     public void StartItems()
     {
         foreach (Item item in items)
@@ -64,6 +58,10 @@ public class MarketManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Compra um determinado estilo
+    /// </summary>
+    /// <param name="item"></param>
     void ButtonBuy(Item item)
     {
         Destroy(item.PriceButton.gameObject);
@@ -75,10 +73,18 @@ public class MarketManager : MonoBehaviour
         //SAVE
     }
 
+    /// <summary>
+    /// Salva uma compra unica
+    /// </summary>
+    /// <param name="item"></param>
     void SaveUniqueBuy(Item item){
         PlayerPrefs.SetInt(item.name, 1);
     }
 
+    /// <summary>
+    /// Compra um novo estilo/musica
+    /// </summary>
+    /// <param name="name"></param>
     public void Buy(string name)
     {
         foreach (Item item in items)
@@ -101,6 +107,9 @@ public class MarketManager : MonoBehaviour
         //salva a compra
     }
 
+    /// <summary>
+    /// Salva as compras feitas
+    /// </summary>
     public void SaveBuy()
     {
         foreach (Item item in items)
@@ -118,8 +127,4 @@ public class MarketManager : MonoBehaviour
         }
         
     }
-
-
-
-
 }

@@ -26,6 +26,9 @@ private InterstitialAd interstitial;
         PlayerPrefs.SetInt("InterstitialAds", 1);
     }
 
+    /// <summary>
+    /// Requisita um ad para se mostrado
+    /// </summary>
     private void RequestInterstitial()
     {
         #if UNITY_ANDROID
@@ -56,12 +59,14 @@ private InterstitialAd interstitial;
         this.interstitial.LoadAd(request);
     }
 
-
+    /// <summary>
+    /// Mostra o ad carregado ao usuario
+    /// </summary>
     public void ShowInterstitalAd()
     {
         
             if (PlayerPrefs.HasKey("InterstitialAds")){
-                if (PlayerPrefs.GetInt("InterstitialAds") == 5)
+                if (PlayerPrefs.GetInt("InterstitialAds") == 6)
                 {
                     if (interstitial.IsLoaded())
                     {
@@ -84,11 +89,6 @@ private InterstitialAd interstitial;
             }
         Debug.Log("InterstitialAds int: " + PlayerPrefs.GetInt("InterstitialAds"));
     }
-
-
-
-
-
 
 
         public void HandleOnAdLoaded(object sender, EventArgs args)

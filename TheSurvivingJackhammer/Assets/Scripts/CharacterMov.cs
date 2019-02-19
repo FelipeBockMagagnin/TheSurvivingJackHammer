@@ -13,7 +13,6 @@ public class CharacterMov : MonoBehaviour {
 	StyleManager styleScript;
 	ChangeBackgroundColor changeScript;
     CoinManager coinManager;
-
     public BoxCollider2D boxcollider;
 
 	void Start(){
@@ -72,6 +71,4 @@ public class CharacterMov : MonoBehaviour {
        
        
     }
-
-	
 }

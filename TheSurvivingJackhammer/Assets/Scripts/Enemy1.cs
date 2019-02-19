@@ -14,13 +14,15 @@ public class Enemy1 : MonoBehaviour {
         Speed = difficultyManager.initialEnemy1Speed;
 	}
 
-	// Use this for initialization
+	/// <summary>
+    /// Move o inimigo em direção do personagem principal
+    /// </summary>
+    /// <param name="speed"></param>
 	void move (float speed) {
 		Vector3 movDir = (mainChar.transform.position - transform.position).normalized;
 		transform.position += movDir* Time.deltaTime * speed;
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate () {
 		move(Speed);
 	}

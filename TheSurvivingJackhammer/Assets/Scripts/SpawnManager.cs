@@ -9,12 +9,14 @@ public class SpawnManager : MonoBehaviour {
 	public float waitTime;
     public float stopWaitTime;
 
-
     private void Start()
     {
         styleManager = GameObject.Find("StyleManager").GetComponent<StyleManager>();
     }
 
+    /// <summary>
+    /// Inicia seus atributos ao começar o jogo
+    /// </summary>
     public void StartGame () {
         foreach (GameObject item in GameObject.FindGameObjectsWithTag("enemy"))
         {
@@ -23,6 +25,11 @@ public class SpawnManager : MonoBehaviour {
 		StartCoroutine(StartSpawning(HighScoreManager.index));
 	}
 
+    /// <summary>
+    /// Cria um personagem
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
 	IEnumerator create(int index){
         int thisindex = index;
         Transform position = spawnPos[Random.Range(0, spawnPos.Length)];
@@ -39,17 +46,28 @@ public class SpawnManager : MonoBehaviour {
 		StartCoroutine(create(index));
 	}
 
+    /// <summary>
+    /// Começa a spawnar novamente
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
 	IEnumerator StartSpawning(int index){
 		yield return new WaitForSeconds(0.8f); 
 		StartCoroutine(create(index));
 	}
 
+    /// <summary>
+    /// Para de spawnar
+    /// </summary>
     public void StopSpawning()
     {
         this.StopAllCoroutines();
         GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>().StopAllCoroutines();
     }
     
+    /// <summary>
+    /// Continua a spawnnar depois de parar
+    /// </summary>
     public void ContinueSpawn()
     {
         foreach (GameObject item in GameObject.FindGameObjectsWithTag("enemy"))
@@ -59,5 +77,4 @@ public class SpawnManager : MonoBehaviour {
         StartCoroutine(StartSpawning(HighScoreManager.index));
         StartCoroutine(GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>().increaseDifficulty());
     }
-
 }
