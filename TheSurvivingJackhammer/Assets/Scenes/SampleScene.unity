@@ -1584,7 +1584,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 16666
+  m_Text: 3333
 --- !u!222 &183761664
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1629,22 +1629,22 @@ MonoBehaviour:
     button: {fileID: 590804612}
     PriceButton: {fileID: 118461464}
   - name: Style2
-    price: 2000
+    price: 200
     blocked: 1
     button: {fileID: 1850225526}
     PriceButton: {fileID: 89515769}
   - name: Style3
-    price: 7000
+    price: 1000
     blocked: 1
     button: {fileID: 881052899}
     PriceButton: {fileID: 502603935}
   - name: Style4
-    price: 16666
+    price: 3333
     blocked: 1
     button: {fileID: 1938047466}
     PriceButton: {fileID: 579352257}
   - name: Style5
-    price: 30000
+    price: 10000
     blocked: 1
     button: {fileID: 1307214020}
     PriceButton: {fileID: 28016486}
@@ -1654,22 +1654,22 @@ MonoBehaviour:
     button: {fileID: 2012842517}
     PriceButton: {fileID: 1123798849}
   - name: Music2
-    price: 1000
+    price: 300
     blocked: 1
     button: {fileID: 1217825273}
     PriceButton: {fileID: 339335905}
   - name: Music3
-    price: 5000
+    price: 1500
     blocked: 1
     button: {fileID: 781450449}
     PriceButton: {fileID: 99655914}
   - name: Music4
-    price: 10000
+    price: 4000
     blocked: 1
     button: {fileID: 745099782}
     PriceButton: {fileID: 1114580109}
   - name: Music5
-    price: 15000
+    price: 7000
     blocked: 1
     button: {fileID: 910456833}
     PriceButton: {fileID: 1040638084}
@@ -2382,7 +2382,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 30000
+  m_Text: 10000
 --- !u!222 &445949469
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3401,7 +3401,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 7000
+  m_Text: 1000
 --- !u!222 &609697874
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4570,7 +4570,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 15000
+  m_Text: 7000
 --- !u!222 &789886898
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6311,7 +6311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10000
+  m_Text: 4000
 --- !u!222 &1100267167
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7547,7 +7547,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5000
+  m_Text: 1500
 --- !u!222 &1276848663
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8117,7 +8117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -557.2001, y: -44.39998}
+  m_AnchoredPosition: {x: -557.2001, y: -44.399963}
   m_SizeDelta: {x: -562, y: -146.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1344300105
@@ -8246,7 +8246,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2000
+  m_Text: 200
 --- !u!222 &1368847230
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9471,7 +9471,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.77624995, y: 0.851}
   m_AnchorMax: {x: 0.96125007, y: 0.93334347}
-  m_AnchoredPosition: {x: -0.50094604, y: -0.14801025}
+  m_AnchoredPosition: {x: -0.50097656, y: -0.14801025}
   m_SizeDelta: {x: 0, y: -0.4900055}
   m_Pivot: {x: 0.55068207, y: 0.4999997}
 --- !u!114 &1830602918
@@ -10514,7 +10514,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1000
+  m_Text: 300
 --- !u!222 &1989869371
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class HighScoreManager : MonoBehaviour {
 		if (HighScore <= 0) {
 			HighScore = 1;
 			if(HighScore > PlayerPrefs.GetInt("highscore")){
-				PlayerPrefs.SetInt("highscore", HighScore);
+				PlayerPrefs.SetInt("highscore", HighScore + 1);
 			}
 		}
 	}	

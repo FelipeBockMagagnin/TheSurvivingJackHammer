@@ -87,7 +87,7 @@ public class AdsManager : MonoBehaviour
             Debug.Log("ad foi carregao e vai ser mostrado");
         } else
         {
-            Debug.Log("ad nao foi carregado e nao vai ser mostrado");
+            RequestRewardBasedVideo();
         }
     }
 
@@ -114,7 +114,6 @@ public class AdsManager : MonoBehaviour
     /// <param name="args"></param>
     public void HandleRewardBasedVideoLoaded(object sender, EventArgs args)
     {
-        MonoBehaviour.print("O VIDEO AD FOI CARREGADO");
     }
 
     /// <summary>
@@ -124,7 +123,7 @@ public class AdsManager : MonoBehaviour
     /// <param name="args"></param>
     public void HandleRewardBasedVideoFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-        this.RequestRewardBasedVideo();
+        //this.RequestRewardBasedVideo();
     }
 
     /// <summary>

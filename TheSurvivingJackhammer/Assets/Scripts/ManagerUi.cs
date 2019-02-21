@@ -67,13 +67,13 @@ public class ManagerUi : MonoBehaviour {
         ShowInterstitialAd();
         EndGamePanel.SetActive(true);               
         EndGameTexts[1].text = (coinManager.GetCoins()+coinManager.earnedcoins).ToString();
-        EndGameTexts[2].text = (HighScoreManager.points).ToString();
-        EndGameTexts[3].text = ((HighScoreManager.HighScore) - 1).ToString();
+        EndGameTexts[2].text = (HighScoreManager.points).ToString();        
         EndGameTexts[4].text = "x" + CoinManager.coinMultiplicator.ToString();
         earnedCoins.text = "+ " + coinManager.earnedcoins;
         print("earnedCoins: " + coinManager.earnedcoins);
         this.earnedcoins = coinManager.earnedcoins;
         coinManager.ChangeCoins();
+        EndGameTexts[3].text = ((HighScoreManager.HighScore) - 1).ToString();
         EnableShowAdsMultiply();
     }
 
