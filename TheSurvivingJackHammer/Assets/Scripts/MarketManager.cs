@@ -48,7 +48,15 @@ public class MarketManager : MonoBehaviour
             if (PlayerPrefs.GetInt(item.name) == 1)
             {
                 Debug.Log("Item " + item.name + " iniciou comprado");
-                Destroy(item.PriceButton.gameObject);
+                if (item.PriceButton.IsDestroyed())
+                {
+                    
+                }
+                else
+                {
+                    Destroy(item.PriceButton.gameObject);
+                }
+                
                 item.button.interactable = true;
                 item.blocked = false;
             }

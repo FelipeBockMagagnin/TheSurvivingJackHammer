@@ -91,7 +91,6 @@ public class StyleManager : MonoBehaviour {
         {
             musicScript.StartSongStyle(musicScript.musicIndex);
         }
-
         ActualMainChar = Instantiate(MainCharStyles[HighScoreManager.index], MainCharSpawn.position, Quaternion.identity);
     }
 
@@ -103,8 +102,7 @@ public class StyleManager : MonoBehaviour {
         if (gameStarted == false){
 			spawnScript.StartGame();
 		}
-		gameStarted = true;
-		
+		gameStarted = true;		
 	}
 
     /// <summary>
@@ -136,8 +134,7 @@ public class StyleManager : MonoBehaviour {
         if (ActualStartParticle != null)
         {
             Destroy(ActualStartParticle);
-        }
-        
+        }        
     }
 
     /// <summary>
@@ -161,17 +158,25 @@ public class StyleManager : MonoBehaviour {
 		}
 		ActualMainChar = Instantiate(MainCharStyles[2], MainCharSpawn.position, Quaternion.identity);
 		HighScoreManager.index = 2;
-        //musicScript.StartSongStyle(HighScoreManager.index);
         giveachivementStyle3();
     }
 
-	public void PenChars(){
+    public void EasterChars()
+    {
+        if (ActualMainChar != null)
+        {
+            Destroy(ActualMainChar);
+        }
+        ActualMainChar = Instantiate(MainCharStyles[5], MainCharSpawn.position, Quaternion.identity);
+        HighScoreManager.index = 5;
+    }
+
+    public void PenChars(){
 		if(ActualMainChar != null){
 			Destroy(ActualMainChar);
 		}
 		ActualMainChar = Instantiate(MainCharStyles[1], MainCharSpawn.position, Quaternion.identity);
 		HighScoreManager.index = 1;
-        //musicScript.StartSongStyle(HighScoreManager.index);
         giveachivementStyle2();
 	}
 
@@ -182,7 +187,6 @@ public class StyleManager : MonoBehaviour {
 		}
 		ActualMainChar = Instantiate(MainCharStyles[0], MainCharSpawn.position, Quaternion.identity);
 		HighScoreManager.index = 0;
-		//musicScript.StartSongStyle(HighScoreManager.index);
 	}
 
     public void CreepyChars()
@@ -193,7 +197,6 @@ public class StyleManager : MonoBehaviour {
         }
         ActualMainChar = Instantiate(MainCharStyles[3], MainCharSpawn.position, Quaternion.identity);
         HighScoreManager.index = 3;
-        //musicScript.StartSongStyle(HighScoreManager.index);
         giveachivementStyle4();
     }
 
@@ -205,7 +208,6 @@ public class StyleManager : MonoBehaviour {
         }
         ActualMainChar = Instantiate(MainCharStyles[4], MainCharSpawn.position, Quaternion.identity);
         HighScoreManager.index = 4;
-        //musicScript.StartSongStyle(HighScoreManager.index);
         giveachivementStyle5();
     }
 
@@ -379,7 +381,4 @@ public class StyleManager : MonoBehaviour {
                 });
         } // end of isAuthenticated
     }
-
-
-
 }

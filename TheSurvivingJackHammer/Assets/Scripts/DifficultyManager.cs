@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class DifficultyManager : MonoBehaviour {
 
-
 	SpawnManager spawnManager;
 
 	public float initialEnemy1Speed;

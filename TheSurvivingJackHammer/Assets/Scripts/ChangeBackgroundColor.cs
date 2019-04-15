@@ -39,7 +39,7 @@ public class ChangeBackgroundColor : MonoBehaviour {
         }
         else if (HighScoreManager.index == 5)
         {
-            //
+            ChangeBackground(colorsPixel);
         }
 
 
