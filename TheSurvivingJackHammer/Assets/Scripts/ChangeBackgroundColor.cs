@@ -11,7 +11,8 @@ public class ChangeBackgroundColor : MonoBehaviour {
     public Color[] colorsPen;
     public Color[] colorsWaterColor;
     public GameObject creepyBackGround;
-    public Color[] colorsNeon;   
+    public Color[] colorsNeon;
+    public Color[] colorsEaster;
 
     /// <summary>
     /// Troca o array de cores ao fundo de acordo com o estilo
@@ -39,7 +40,7 @@ public class ChangeBackgroundColor : MonoBehaviour {
         }
         else if (HighScoreManager.index == 5)
         {
-            ChangeBackground(colorsPixel);
+            ChangeBackground(colorsEaster);
         }
 
 

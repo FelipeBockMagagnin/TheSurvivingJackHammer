@@ -173,7 +173,6 @@ namespace CompleteProject
         {
            if (String.Equals(args.purchasedProduct.definition.id, kProductIDNonConsumable, StringComparison.Ordinal))
             {
-                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 PlayerPrefs.SetInt("ADSdisabled", 1);
                 AdsManager.ADSenabled = false;
             }

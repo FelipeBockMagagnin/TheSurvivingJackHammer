@@ -10,6 +10,7 @@ public class GoogleManager : MonoBehaviour
     // ADD THESE TWO LINES
     private Text signInButtonText;
     private Text authStatus;
+    private GameObject noADS;
 
 
     private GameObject achButton;
@@ -21,6 +22,7 @@ public class GoogleManager : MonoBehaviour
         achButton = GameObject.Find("achButton");
         EventSystem.current.firstSelectedGameObject = startButton;
         ldrButton = GameObject.Find("ldrButton");
+        noADS = GameObject.Find("noADS");
 
         signInButtonText =
              GameObject.Find("signInButton").GetComponentInChildren<Text>();
@@ -88,6 +90,10 @@ public class GoogleManager : MonoBehaviour
     {
         achButton.SetActive(Social.localUser.authenticated);
         ldrButton.SetActive(Social.localUser.authenticated);
+        if (noADS != null)
+        {
+            noADS.SetActive(AdsManager.ADSenabled);
+        }
     }
 
 
