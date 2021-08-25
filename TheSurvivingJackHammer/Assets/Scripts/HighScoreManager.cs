@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using GooglePlayGames;
+//using GooglePlayGames;
 
 public class HighScoreManager : MonoBehaviour {
 
@@ -31,17 +31,17 @@ public class HighScoreManager : MonoBehaviour {
 
     public static void UpdateHighScore()
     {
-        // Submit leaderboard scores, if authenticated
-        if (PlayGamesPlatform.Instance.localUser.authenticated)
-        {
-            // Note: make sure to add 'using GooglePlayGames'
-            PlayGamesPlatform.Instance.ReportScore(HighScore,
-                GPGSIds.leaderboard_high_score,
-                (bool success) =>
-                {
-                    Debug.Log("(Lollygagger) Leaderboard update success: " + success);
-                });
-        }
+        // // Submit leaderboard scores, if authenticated
+        // if (PlayGamesPlatform.Instance.localUser.authenticated)
+        // {
+        //     // Note: make sure to add 'using GooglePlayGames'
+        //     PlayGamesPlatform.Instance.ReportScore(HighScore,
+        //         GPGSIds.leaderboard_high_score,
+        //         (bool success) =>
+        //         {
+        //             Debug.Log("(Lollygagger) Leaderboard update success: " + success);
+        //         });
+        // }
     }
 
 

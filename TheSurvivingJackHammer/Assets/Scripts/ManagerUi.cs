@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using GooglePlayGames;
+//using GooglePlayGames;
 
 public class ManagerUi : MonoBehaviour {
 
@@ -17,34 +17,34 @@ public class ManagerUi : MonoBehaviour {
     public GameObject EndGamePanel;
     public GameObject LeaderBoardPanel;
     CoinManager coinManager;
-    AdsManager adsManager;
-    InterstitialAds interstitialAds;
+    //AdsManager adsManager;
+    //InterstitialAds interstitialAds;
     StyleManager styleManager;
     int earnedcoins;
 
     public void giveachivementStartGame()
     {
-        // Only do achievements if the user is signed in
-        if (Social.localUser.authenticated)
-        {
-            // Unlock the "welcome" achievement, it is OK to
-            // unlock multiple times, only the first time matters.
-            PlayGamesPlatform.Instance.ReportProgress(
-                GPGSIds.achievement_welcome_to_the_surviving_jackhammer,
-                100.0f, (bool success) =>
-                {
-                    Debug.Log("(Lollygagger) Welcome Unlock: " +
-                              success);
-                });
-        } // end of isAuthenticated
+        // // Only do achievements if the user is signed in
+        // if (Social.localUser.authenticated)
+        // {
+        //     // Unlock the "welcome" achievement, it is OK to
+        //     // unlock multiple times, only the first time matters.
+        //     PlayGamesPlatform.Instance.ReportProgress(
+        //         GPGSIds.achievement_welcome_to_the_surviving_jackhammer,
+        //         100.0f, (bool success) =>
+        //         {
+        //             Debug.Log("(Lollygagger) Welcome Unlock: " +
+        //                       success);
+        //         });
+        // } // end of isAuthenticated
     }
 
 
 
     void Start(){
         coinManager = GameObject.Find("CoinManager").GetComponent<CoinManager>();
-        adsManager = GameObject.Find("AdsManager").GetComponent<AdsManager>();
-        interstitialAds = GameObject.Find("InterstitialAds").GetComponent<InterstitialAds>();
+        //adsManager = GameObject.Find("AdsManager").GetComponent<AdsManager>();
+        //interstitialAds = GameObject.Find("InterstitialAds").GetComponent<InterstitialAds>();
         styleManager = GameObject.Find("StyleManager").GetComponent<StyleManager>();
         HighScoreManager.points = 0;
     }
@@ -77,7 +77,7 @@ public class ManagerUi : MonoBehaviour {
     /// </summary>
     public void ShowInterstitialAd()
     {
-        interstitialAds.ShowInterstitalAd();
+        //interstitialAds.ShowInterstitalAd();
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ public class ManagerUi : MonoBehaviour {
     /// </summary>
     public void CallPropagandaMultiply()
     {
-        adsManager.GivePlayerCoinMultiply();
+        //adsManager.GivePlayerCoinMultiply();
     }
 
     /// <summary>
@@ -131,7 +131,7 @@ public class ManagerUi : MonoBehaviour {
     /// </summary>
     public void disableSHowAdsMultiply()
     {
-        playAdsMultiplyCoins.interactable = false;
+        //playAdsMultiplyCoins.interactable = false;
     }
 
     /// <summary>
@@ -139,7 +139,7 @@ public class ManagerUi : MonoBehaviour {
     /// </summary>
     public void userOptToWatchAd()
     {
-        adsManager.UserOptWatchAdMultipliCoins();
+        //adsManager.UserOptWatchAdMultipliCoins();
     }
 
     /// <summary>
@@ -147,7 +147,7 @@ public class ManagerUi : MonoBehaviour {
     /// </summary>
     public void EnableShowAdsMultiply()
     {
-        playAdsMultiplyCoins.interactable = true;
+        //playAdsMultiplyCoins.interactable = true;
     }
 
   

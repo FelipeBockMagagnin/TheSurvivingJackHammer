@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using GooglePlayGames;
+//using GooglePlayGames;
 
 public class StyleManager : MonoBehaviour {
 
@@ -248,137 +248,137 @@ public class StyleManager : MonoBehaviour {
 
     public void giveachivementMusic2()
     {
-        // Only do achievements if the user is signed in
-        if (Social.localUser.authenticated)
-        {
-            // Unlock the "welcome" achievement, it is OK to
-            // unlock multiple times, only the first time matters.
-            PlayGamesPlatform.Instance.ReportProgress(
-                GPGSIds.achievement_music_2,
-                100.0f, (bool success) =>
-                {
-                    Debug.Log("(Lollygagger) Welcome Unlock: " +
-                              success);
-                });
-        } // end of isAuthenticated
+        // // Only do achievements if the user is signed in
+        // if (Social.localUser.authenticated)
+        // {
+        //     // Unlock the "welcome" achievement, it is OK to
+        //     // unlock multiple times, only the first time matters.
+        //     PlayGamesPlatform.Instance.ReportProgress(
+        //         GPGSIds.achievement_music_2,
+        //         100.0f, (bool success) =>
+        //         {
+        //             Debug.Log("(Lollygagger) Welcome Unlock: " +
+        //                       success);
+        //         });
+        // } // end of isAuthenticated
     }
 
     public void giveachivementMusic3()
     {
-        // Only do achievements if the user is signed in
-        if (Social.localUser.authenticated)
-        {
-            // Unlock the "welcome" achievement, it is OK to
-            // unlock multiple times, only the first time matters.
-            PlayGamesPlatform.Instance.ReportProgress(
-                GPGSIds.achievement_music_3,
-                100.0f, (bool success) =>
-                {
-                    Debug.Log("(Lollygagger) Welcome Unlock: " +
-                              success);
-                });
-        } // end of isAuthenticated
+        // // Only do achievements if the user is signed in
+        // if (Social.localUser.authenticated)
+        // {
+        //     // Unlock the "welcome" achievement, it is OK to
+        //     // unlock multiple times, only the first time matters.
+        //     PlayGamesPlatform.Instance.ReportProgress(
+        //         GPGSIds.achievement_music_3,
+        //         100.0f, (bool success) =>
+        //         {
+        //             Debug.Log("(Lollygagger) Welcome Unlock: " +
+        //                       success);
+        //         });
+        // } // end of isAuthenticated
     }
 
     public void giveachivementMusic4()
     {
-        // Only do achievements if the user is signed in
-        if (Social.localUser.authenticated)
-        {
-            // Unlock the "welcome" achievement, it is OK to
-            // unlock multiple times, only the first time matters.
-            PlayGamesPlatform.Instance.ReportProgress(
-                GPGSIds.achievement_music_4,
-                100.0f, (bool success) =>
-                {
-                    Debug.Log("(Lollygagger) Welcome Unlock: " +
-                              success);
-                });
-        } // end of isAuthenticated
+        // // Only do achievements if the user is signed in
+        // if (Social.localUser.authenticated)
+        // {
+        //     // Unlock the "welcome" achievement, it is OK to
+        //     // unlock multiple times, only the first time matters.
+        //     PlayGamesPlatform.Instance.ReportProgress(
+        //         GPGSIds.achievement_music_4,
+        //         100.0f, (bool success) =>
+        //         {
+        //             Debug.Log("(Lollygagger) Welcome Unlock: " +
+        //                       success);
+        //         });
+        // } // end of isAuthenticated
     }
 
     public void giveachivementMusic5()
     {
-        // Only do achievements if the user is signed in
-        if (Social.localUser.authenticated)
-        {
-            // Unlock the "welcome" achievement, it is OK to
-            // unlock multiple times, only the first time matters.
-            PlayGamesPlatform.Instance.ReportProgress(
-                GPGSIds.achievement_music_5,
-                100.0f, (bool success) =>
-                {
-                    Debug.Log("(Lollygagger) Welcome Unlock: " +
-                              success);
-                });
-        } // end of isAuthenticated
+        // // Only do achievements if the user is signed in
+        // if (Social.localUser.authenticated)
+        // {
+        //     // Unlock the "welcome" achievement, it is OK to
+        //     // unlock multiple times, only the first time matters.
+        //     PlayGamesPlatform.Instance.ReportProgress(
+        //         GPGSIds.achievement_music_5,
+        //         100.0f, (bool success) =>
+        //         {
+        //             Debug.Log("(Lollygagger) Welcome Unlock: " +
+        //                       success);
+        //         });
+        // } // end of isAuthenticated
     }
 
     public void giveachivementStyle2()
     {
-        // Only do achievements if the user is signed in
-        if (Social.localUser.authenticated)
-        {
-            // Unlock the "welcome" achievement, it is OK to
-            // unlock multiple times, only the first time matters.
-            PlayGamesPlatform.Instance.ReportProgress(
-                GPGSIds.achievement_style_2,
-                100.0f, (bool success) =>
-                {
-                    Debug.Log("(Lollygagger) Welcome Unlock: " +
-                              success);
-                });
-        } // end of isAuthenticated
+        // // Only do achievements if the user is signed in
+        // if (Social.localUser.authenticated)
+        // {
+        //     // Unlock the "welcome" achievement, it is OK to
+        //     // unlock multiple times, only the first time matters.
+        //     PlayGamesPlatform.Instance.ReportProgress(
+        //         GPGSIds.achievement_style_2,
+        //         100.0f, (bool success) =>
+        //         {
+        //             Debug.Log("(Lollygagger) Welcome Unlock: " +
+        //                       success);
+        //         });
+        // } // end of isAuthenticated
     }
 
     public void giveachivementStyle3()
     {
-        // Only do achievements if the user is signed in
-        if (Social.localUser.authenticated)
-        {
-            // Unlock the "welcome" achievement, it is OK to
-            // unlock multiple times, only the first time matters.
-            PlayGamesPlatform.Instance.ReportProgress(
-                GPGSIds.achievement_style_3,
-                100.0f, (bool success) =>
-                {
-                    Debug.Log("(Lollygagger) Welcome Unlock: " +
-                              success);
-                });
-        } // end of isAuthenticated
+        // // Only do achievements if the user is signed in
+        // if (Social.localUser.authenticated)
+        // {
+        //     // Unlock the "welcome" achievement, it is OK to
+        //     // unlock multiple times, only the first time matters.
+        //     PlayGamesPlatform.Instance.ReportProgress(
+        //         GPGSIds.achievement_style_3,
+        //         100.0f, (bool success) =>
+        //         {
+        //             Debug.Log("(Lollygagger) Welcome Unlock: " +
+        //                       success);
+        //         });
+        // } // end of isAuthenticated
     }
 
     public void giveachivementStyle4()
     {
-        // Only do achievements if the user is signed in
-        if (Social.localUser.authenticated)
-        {
-            // Unlock the "welcome" achievement, it is OK to
-            // unlock multiple times, only the first time matters.
-            PlayGamesPlatform.Instance.ReportProgress(
-                GPGSIds.achievement_style_4,
-                100.0f, (bool success) =>
-                {
-                    Debug.Log("(Lollygagger) Welcome Unlock: " +
-                              success);
-                });
-        } // end of isAuthenticated
+        // // Only do achievements if the user is signed in
+        // if (Social.localUser.authenticated)
+        // {
+        //     // Unlock the "welcome" achievement, it is OK to
+        //     // unlock multiple times, only the first time matters.
+        //     PlayGamesPlatform.Instance.ReportProgress(
+        //         GPGSIds.achievement_style_4,
+        //         100.0f, (bool success) =>
+        //         {
+        //             Debug.Log("(Lollygagger) Welcome Unlock: " +
+        //                       success);
+        //         });
+        // } // end of isAuthenticated
     }
 
     public void giveachivementStyle5()
     {
-        // Only do achievements if the user is signed in
-        if (Social.localUser.authenticated)
-        {
-            // Unlock the "welcome" achievement, it is OK to
-            // unlock multiple times, only the first time matters.
-            PlayGamesPlatform.Instance.ReportProgress(
-                GPGSIds.achievement_style_5,
-                100.0f, (bool success) =>
-                {
-                    Debug.Log("(Lollygagger) Welcome Unlock: " +
-                              success);
-                });
-        } // end of isAuthenticated
+        // // Only do achievements if the user is signed in
+        // if (Social.localUser.authenticated)
+        // {
+        //     // Unlock the "welcome" achievement, it is OK to
+        //     // unlock multiple times, only the first time matters.
+        //     PlayGamesPlatform.Instance.ReportProgress(
+        //         GPGSIds.achievement_style_5,
+        //         100.0f, (bool success) =>
+        //         {
+        //             Debug.Log("(Lollygagger) Welcome Unlock: " +
+        //                       success);
+        //         });
+        // } // end of isAuthenticated
     }
 }

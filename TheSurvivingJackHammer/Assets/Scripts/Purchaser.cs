@@ -174,7 +174,7 @@ namespace CompleteProject
            if (String.Equals(args.purchasedProduct.definition.id, kProductIDNonConsumable, StringComparison.Ordinal))
             {
                 PlayerPrefs.SetInt("ADSdisabled", 1);
-                AdsManager.ADSenabled = false;
+                //AdsManager.ADSenabled = false;
             }
             // Or ... an unknown product has been purchased by this user. Fill in additional products here....
             else
