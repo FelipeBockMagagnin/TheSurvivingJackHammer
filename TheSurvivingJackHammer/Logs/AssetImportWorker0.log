@@ -1,0 +1,21 @@
+Using pre-set license
+Built from '2021.1/staging' branch; Version is '2021.1.15f1 (e767a7370072) revision 15165351'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home Single Language; OS build 19042.1165; Version 2009; 64bit' Language: 'pt' Physical Memory: 14210 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.1.15f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/felip/Desktop/Projects/TheSurvivingJackHammer/TheSurvivingJackHammer
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+53258
+Successfully changed project path to: C:/Users/felip/Desktop/Projects/TheSurvivingJackHammer/TheSurvivingJackHammer
+C:/Users/felip/Desktop/Projects/TheSurvivingJackHammer/TheSurvivingJackHammer
+Using Asset Import Pipeline V2.
