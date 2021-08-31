@@ -39,6 +39,19 @@ public class CharacterMov : MonoBehaviour {
 			}
 		}
 
+        if (Input.GetKeyDown("right"))
+        {
+            transform.Rotate (0,0,-90);
+			playerAnim.SetTrigger("move");
+			swingSound.Play();
+        } 
+        else if (Input.GetKeyDown("left"))
+        {
+            transform.Rotate (0,0,90);
+			playerAnim.SetTrigger("move");
+			swingSound.Play();
+        }
+
         if(Input.GetMouseButtonDown(0))
         {
             if (Input.mousePosition.x < Screen.width/2)
